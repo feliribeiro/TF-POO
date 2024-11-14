@@ -1,3 +1,5 @@
+package dados;
+
 import java.util.ArrayList;
 
 public class CadastroDrone {
@@ -17,9 +19,10 @@ public class CadastroDrone {
         }
         return false;
     }
+
     public void printDrones() {
         for (int i = 0; i < drones.size(); i++) {
-            System.out.println(drones.get(i));
+            System.out.println();
         }
     }
 }

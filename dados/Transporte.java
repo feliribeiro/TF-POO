@@ -1,3 +1,5 @@
+package dados;
+
 public abstract class Transporte {
 private int numero;
 private String nomeCliente;

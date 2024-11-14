@@ -1,3 +1,5 @@
+package dados;
+
 public class DronePessoal extends Drone {
  private int qtdMaxPessoas;
 
@@ -6,7 +8,7 @@ public class DronePessoal extends Drone {
     this.qtdMaxPessoas = qtdMaxPessoas;
  }
 
-    @Override
+
     public double calculaCustoKm() {
         return 0;
     }
