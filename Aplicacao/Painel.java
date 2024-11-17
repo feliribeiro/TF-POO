@@ -1,4 +1,4 @@
-package aplicacao;
+package Aplicacao;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

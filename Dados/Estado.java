@@ -1,4 +1,4 @@
-package dados;
+package Dados;
 
 public enum Estado {
 
