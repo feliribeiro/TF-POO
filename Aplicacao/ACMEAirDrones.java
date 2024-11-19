@@ -1,5 +1,3 @@
-package Aplicacao;
-
 import javax.swing.*;
 
 public class ACMEAirDrones extends JFrame {
@@ -10,7 +8,7 @@ public class ACMEAirDrones extends JFrame {
     public void executar() {
         form = new Painel();
         this.add(form.getPainel());
-        this.setSize(800, 800);
+        this.setSize(530, 450);
         this.setTitle("ACMEAirDrones");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
