@@ -1,5 +1,3 @@
-package Dados;
-
 public class TransporteCargaViva extends Transporte{
 
     private double temperaturaMinima;

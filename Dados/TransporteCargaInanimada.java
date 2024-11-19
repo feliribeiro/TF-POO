@@ -1,5 +1,3 @@
-package Dados;
-
 public class TransporteCargaInanimada extends Transporte{
     private boolean cargaPerigosa;
 

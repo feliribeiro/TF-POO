@@ -1,5 +1,3 @@
-package Dados;
-
 public abstract class Drone {
     private int codigo;
     private double custoFixo;

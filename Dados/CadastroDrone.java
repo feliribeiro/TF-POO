@@ -1,5 +1,3 @@
-package Dados;
-
 import java.util.ArrayList;
 
 public class CadastroDrone {
