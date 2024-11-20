@@ -7,6 +7,10 @@ public class DroneCargaInanimada extends DroneCarga {
     }
 
     public double calculaCustoKm() {
-        return 0;
+        double custoKm = getCustoFixo() / getAutonomia();
+        if (protecao) {
+            return custoKm + 10;
+        } else
+            return custoKm + 5;
     }
 }

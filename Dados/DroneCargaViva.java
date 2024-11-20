@@ -7,6 +7,11 @@ public class DroneCargaViva extends DroneCarga {
     }
 
     public double calculaCustoKm() {
-        return 0;
+        double custoKm = getCustoFixo() / getAutonomia();
+
+        if (climatizado) {
+            return custoKm + 20.0;
+        } else
+            return custoKm + 10.0;
     }
 }
