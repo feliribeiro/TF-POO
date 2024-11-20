@@ -1,4 +1,6 @@
 
+package Dados;
+
 import java.util.ArrayList;
 
 public class CadastroDrone {
@@ -12,6 +14,7 @@ public class CadastroDrone {
     public void addDrone(Drone d) {
         drones.add(d);
     }
+
     public boolean verificaRepetido(int codigoDrone) {
         for (Drone drone : drones) {
             if (drone.getCodigo() == codigoDrone) return true;

@@ -1,3 +1,5 @@
+package Dados;
+
 public class DroneCarga extends Drone {
     private double pesoMaximo;
 
@@ -6,7 +8,10 @@ public class DroneCarga extends Drone {
         this.pesoMaximo = pesoMaximo;
     }
 
+
+    @Override
     public double calculaCustoKm() {
+
         return 0;
     }
 }

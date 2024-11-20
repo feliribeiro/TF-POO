@@ -1,12 +1,21 @@
+package Dados;
+import Dados.Drone;
 public class TransporteCargaInanimada extends Transporte{
     private boolean cargaPerigosa;
 
     public TransporteCargaInanimada(int numero, String nomeCliente, String descricao, double peso, double latitudeOrigem, double latitudeDestino, double longitudeOrigem, double longitudeDestino, Estado situacao) {
         super(numero, nomeCliente, descricao, peso, latitudeOrigem, latitudeDestino, longitudeOrigem, longitudeDestino, situacao);
+        this.cargaPerigosa = cargaPerigosa;
     }
 
     @Override
     public double calculaCusto() {
-        return 0;
+        double custoAdicional = 0;
+        double custoBase = calculaDistancia() * getDrone().calculaCustoKm();
+
+        if (cargaPerigosa) {
+            custoAdicional += 500;
+        }
+        return custoAdicional + custoBase;
     }
 }

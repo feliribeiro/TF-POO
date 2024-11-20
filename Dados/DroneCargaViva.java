@@ -1,3 +1,5 @@
+package Dados;
+
 public class DroneCargaViva extends DroneCarga {
     private boolean climatizado;
 
@@ -6,6 +8,9 @@ public class DroneCargaViva extends DroneCarga {
         this.climatizado = climatizado;
     }
 
+
+
+    @Override
     public double calculaCustoKm() {
         double custoKm = getCustoFixo() / getAutonomia();
 

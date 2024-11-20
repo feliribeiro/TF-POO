@@ -1,3 +1,5 @@
+package Dados;
+
 public abstract class Transporte {
 private int numero;
 private String nomeCliente;
@@ -8,6 +10,7 @@ private double latitudeDestino;
 private double longitudeOrigem;
 private double longitudeDestino;
 private Estado situacao;
+private Drone drone;
 
     public Transporte(int numero, String nomeCliente, String descricao, double peso,
         double latitudeOrigem, double latitudeDestino, double longitudeOrigem, double longitudeDestino, Estado situacao) {
@@ -21,6 +24,15 @@ private Estado situacao;
         this.longitudeOrigem = longitudeOrigem;
         this.longitudeDestino = longitudeDestino;
         this.situacao = situacao;
+        this.drone = drone;
+    }
+    public double calculaDistancia() {
+        double deltaLatitude = Math.abs(latitudeDestino - latitudeOrigem);
+        double deltaLongitude = Math.abs(longitudeDestino - longitudeOrigem);
+        return Math.sqrt(Math.pow(deltaLatitude, 2) + Math.pow(deltaLongitude, 2));
+    }
+    public Drone getDrone() {
+        return drone;
     }
 
     public abstract double calculaCusto();

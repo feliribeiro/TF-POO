@@ -1,4 +1,8 @@
-public class TransporteCargaViva extends Transporte{
+package Dados;
+
+import Dados.Transporte;
+
+public class TransporteCargaViva extends Transporte {
 
     private double temperaturaMinima;
     private double temperaturaMaxima;
@@ -9,6 +13,12 @@ public class TransporteCargaViva extends Transporte{
 
     @Override
     public double calculaCusto() {
-        return 0;
+        double custoAdicional = 0;
+        double custoBase = calculaDistancia() * getDrone().calculaCustoKm();
+
+        if (temperaturaMaxima - temperaturaMinima > 10) {
+            custoAdicional += 1000;
+        }
+        return custoAdicional + custoBase;
     }
 }

@@ -1,3 +1,7 @@
+package Dados;
+
+import Dados.Drone;
+
 public class DronePessoal extends Drone {
     private int qtdMaxPessoas;
 

@@ -1,3 +1,5 @@
+package Dados;
+
 public class DroneCargaInanimada extends DroneCarga {
     private boolean protecao;
 
@@ -6,6 +8,8 @@ public class DroneCargaInanimada extends DroneCarga {
         this.protecao = protecao;
     }
 
+
+    @Override
     public double calculaCustoKm() {
         double custoKm = getCustoFixo() / getAutonomia();
         if (protecao) {
