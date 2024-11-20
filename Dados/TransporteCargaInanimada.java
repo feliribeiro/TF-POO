@@ -18,4 +18,9 @@ public class TransporteCargaInanimada extends Transporte{
         }
         return custoAdicional + custoBase;
     }
+
+  public String toString() {
+      return super.toSuperString() + "\nCusto do Transporte De Carga Inanimada: " + calculaCusto();
+  }
+
 }

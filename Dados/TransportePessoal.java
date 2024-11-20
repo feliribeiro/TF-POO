@@ -16,4 +16,9 @@ public class TransportePessoal extends Transporte {
 
         return custoBase + custoAdicional;
     }
+
+    public String toString() {
+        return super.toSuperString() + "\nCusto do Transporte Pessoal: " + calculaCusto();
+    }
+
 }

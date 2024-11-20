@@ -27,6 +27,7 @@ public class Painel {
         });
     }
     public JPanel getPainel() {
+
         return Painel;
     }
 }

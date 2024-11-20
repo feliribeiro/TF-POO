@@ -15,14 +15,20 @@ public abstract class Drone {
     public abstract double calculaCustoKm();
 
     public int getCodigo() {
+
         return codigo;
     }
 
     public double getCustoFixo() {
+
         return custoFixo;
     }
 
     public double getAutonomia() {
         return autonomia;
+    }
+
+    public String toString() {
+        return "\nCódigo: " + codigo + "\n Custo Fixo: " + custoFixo + "\n Autonomia: " + autonomia;
     }
 }

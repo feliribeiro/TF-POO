@@ -21,4 +21,8 @@ public class TransporteCargaViva extends Transporte {
         }
         return custoAdicional + custoBase;
     }
+
+    public String toString() {
+        return super.toSuperString() + "\nCusto do Transporte De Carga Viva: " + calculaCusto();
+    }
 }

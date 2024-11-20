@@ -1,4 +1,5 @@
 package Dados;
+import Dados.Drone;
 
 public abstract class Transporte {
 private int numero;
@@ -32,6 +33,7 @@ private Drone drone;
         return Math.sqrt(Math.pow(deltaLatitude, 2) + Math.pow(deltaLongitude, 2));
     }
     public Drone getDrone() {
+
         return drone;
     }
 
@@ -39,5 +41,12 @@ private Drone drone;
 
     public int getNumero() {
         return numero;
+    }
+
+    public String toSuperString() {
+        return drone.toString() + "\n" + "Número: " + numero + "\nNome do Cliente: " + nomeCliente + "\nDescrição: " + descricao + "\nPeso: " + peso
+                + "\nLatitude Origem: " + latitudeOrigem + "\nLatitude Destino: " + latitudeDestino + "\nLongitude Origem: " + longitudeOrigem + "\nLongitude Destino: " +
+                longitudeDestino + "\nSituação: " + situacao;
+
     }
 }
