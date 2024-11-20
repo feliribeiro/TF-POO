@@ -37,4 +37,7 @@ private Drone drone;
 
     public abstract double calculaCusto();
 
+    public int getNumero() {
+        return numero;
+    }
 }
