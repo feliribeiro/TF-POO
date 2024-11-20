@@ -11,6 +11,7 @@ public abstract class Drone {
 
 
     public abstract double calculaCustoKm();
+
     public int getCodigo() {
         return codigo;
     }
