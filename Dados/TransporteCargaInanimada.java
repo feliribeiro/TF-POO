@@ -1,5 +1,5 @@
 package Dados;
-import Dados.Drone;
+
 public class TransporteCargaInanimada extends Transporte{
     private boolean cargaPerigosa;
 

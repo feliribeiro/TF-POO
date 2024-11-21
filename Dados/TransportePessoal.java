@@ -1,6 +1,5 @@
 package Dados;
 
-import Dados.Transporte;
 
 public class TransportePessoal extends Transporte {
     private int qtdPessoas;

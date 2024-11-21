@@ -1,6 +1,5 @@
 package Dados;
 
-import Dados.Transporte;
 
 public class TransporteCargaViva extends Transporte {
 
