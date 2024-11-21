@@ -27,13 +27,13 @@ private Drone drone;
         this.situacao = situacao;
         this.drone = drone;
     }
+
     public double calculaDistancia() {
         double deltaLatitude = Math.abs(latitudeDestino - latitudeOrigem);
         double deltaLongitude = Math.abs(longitudeDestino - longitudeOrigem);
         return Math.sqrt(Math.pow(deltaLatitude, 2) + Math.pow(deltaLongitude, 2));
     }
     public Drone getDrone() {
-
         return drone;
     }
 

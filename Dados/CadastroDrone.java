@@ -8,14 +8,11 @@ public class CadastroDrone {
     private ArrayList<Drone> drones;
 
     public CadastroDrone() {
-
         drones = new ArrayList<>();
     }
 
     public void addDrone(Drone d) {
-        
         drones.add(d);
-
     }
 
     public boolean verificaRepetido(int codigoDrone) {
