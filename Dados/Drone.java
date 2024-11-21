@@ -19,6 +19,7 @@ public abstract class Drone {
     }
 
     public double getCustoFixo() {
+
         return custoFixo;
     }
 

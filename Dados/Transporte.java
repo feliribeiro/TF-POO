@@ -64,4 +64,12 @@ public abstract class Transporte {
                 longitudeDestino + "\nSituação: " + situacao;
 
     }
+
+    public Estado getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Estado situacao) {
+        this.situacao = situacao;
+    }
 }
