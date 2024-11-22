@@ -33,9 +33,19 @@ public class Painel {
             }
         });
 
+        finalizarSistemaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        cadastrarNovoDroneButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JanelaCadastroDrone JCD = new JanelaCadastroDrone();
+            }
+        });
     }
-    public JPanel getPainel() {
 
-        return Painel;
-    }
+    public JPanel getPainel() {return Painel;}
 }
