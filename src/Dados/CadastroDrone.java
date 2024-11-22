@@ -7,6 +7,8 @@ public class CadastroDrone {
 
     private ArrayList<Drone> drones;
 
+    private Comparador c;
+
     public CadastroDrone() {
         drones = new ArrayList<>();
     }
@@ -27,10 +29,25 @@ public class CadastroDrone {
         return false;
     }
 
-    public void printDrones() {
-        for (Drone drone : drones) {
-            System.out.println(drone);
+    public String mostraDrones() {
+        drones.sort(c);
+        ArrayList<Drone> droneOrdenados = drones;
+        StringBuilder sb = new StringBuilder();
+        for (Drone drone : droneOrdenados) {
+            sb.append(drone.toString()).append("\n");
         }
+        return sb.toString();
+    }
+
+    public boolean eRepetido(int codigo){
+        if (drones == null || drones.isEmpty()) {
+            return false;
+        }
+        for (Drone drone : drones) {
+            if (drone.getCodigo() == codigo){
+                return true;
+            }
+        } return false;
     }
 
     public String gerarRelatorioDrones() {

@@ -11,7 +11,7 @@ public class JanelaCadastroDrone extends JDialog {
         this.setContentPane(formJanelaCadastroDrone.getPainel());
         this.setTitle("Cadastro de Drone");
         this.pack();
-        this.setSize(800,200);
+        this.setSize(800,400);
         this.setModal(true);
         this.setVisible(true);
     }
