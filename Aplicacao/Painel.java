@@ -19,16 +19,23 @@ public class Painel {
 
     public Painel() {
 
-        finalizarSistemaButton.addActionListener(new ActionListener() {
+        cadastrarNovoDroneButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                // Chame o método correspondente em ACMEAirDrones
             }
         });
+
+        cadastrarNovoTransporteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Chame o método correspondente em ACMEAirDrones
+            }
+        });
+
     }
     public JPanel getPainel() {
 
         return Painel;
     }
-
 }

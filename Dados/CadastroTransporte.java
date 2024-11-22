@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CadastroTransporte {
 
-    private List<Transporte> transportes;
+    private static List<Transporte> transportes;
 
     public CadastroTransporte() {
         this.transportes = new ArrayList<>();
@@ -50,7 +50,6 @@ public class CadastroTransporte {
         }
         return relatorio.toString();
     }
-
 
     public void alterarSituacao(int numeroTransporte, Estado situacao) {
         for (Transporte transporte : transportes) {
