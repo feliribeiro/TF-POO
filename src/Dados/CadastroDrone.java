@@ -14,20 +14,12 @@ public class CadastroDrone {
     }
 
     public void addDrone(Drone d) {
-        if (verificaRepetido(d.getCodigo())) {
+        if (eRepetido(d.getCodigo())) {
             System.out.println("Erro: Drone com código já existente.");
             return;
         }
         System.out.println("Drone cadastrado com sucesso.");
         drones.add(d);
-    }
-
-    public boolean verificaRepetido(int codigoDrone) {
-        for (Drone drone : drones) {
-            if (drone.getCodigo() == codigoDrone)
-                return true;
-        }
-        return false;
     }
 
     public String mostraDrones() {

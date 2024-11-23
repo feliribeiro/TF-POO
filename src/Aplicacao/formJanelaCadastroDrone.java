@@ -9,57 +9,57 @@ import java.awt.event.ActionListener;
 
 public class formJanelaCadastroDrone {
     private JPanel Painel;
-    private JButton voltarButton;
-    private JButton confirmarButton;
-    private JTextField codigoField1;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JButton mostrarButton;
-    private JButton limparButton;
+    private JButton botaoVoltar;
+    private JButton botaoConfirmar;
+    private JTextField txtCodigo;
+    private JTextField txtCustoFixo;
+    private JTextField txtAutonomia;
+    private JTextField txtqtdMaxima;
+    private JButton botaoMostrar;
+    private JButton botaoLimpar;
     private JanelaCadastroDrone janelaCadastroDrone;
 
     public formJanelaCadastroDrone(JanelaCadastroDrone janelaCadastroDrone) {
         CadastroDrone cd = new CadastroDrone();
 
         this.janelaCadastroDrone = janelaCadastroDrone;
-        voltarButton.addActionListener(new ActionListener() {
+        botaoVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 janelaCadastroDrone.setVisible(false);
             }
         });
-        limparButton.addActionListener(new ActionListener() {
+        botaoLimpar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 limpaField();
             }
         });
-        mostrarButton.addActionListener(new ActionListener() {
+        botaoMostrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null,cd.mostraDrones());
             }
         });
-        confirmarButton.addActionListener(new ActionListener() {
+        botaoConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (cd.eRepetido(Integer.parseInt(codigoField1.getText()))){
+                if (cd.eRepetido(Integer.parseInt(txtCodigo.getText()))){
                     JOptionPane.showMessageDialog(null, "Este codigo já foi utilizado no cadastro de outro drone."+"\n");
                     limpaField();
                 } else {
 
                     try {
-                        int codigo = Integer.parseInt(codigoField1.getText());
-                        double custoFixo = Double.parseDouble(textField1.getText());
-                        double autonomia = Double.parseDouble(textField2.getText());
-                        int qtdMaxima = Integer.parseInt(textField3.getText());
+                        int codigo = Integer.parseInt(txtCodigo.getText());
+                        double custoFixo = Double.parseDouble(txtCustoFixo.getText());
+                        double autonomia = Double.parseDouble(txtAutonomia.getText());
+                        int qtdMaxima = Integer.parseInt(txtqtdMaxima.getText());
                         cd.addDrone(new DronePessoal(codigo, custoFixo, autonomia, qtdMaxima));
-                        JOptionPane.showMessageDialog(null,"Código do Drone: " + codigoField1.getText() + "\n" +
-                                "Custo Fixo: " + textField1.getText() + "\n" +
-                                "Autonomia: " + textField2.getText() + "\n" +
-                                "Quantidade Máxima de Pessoas: " + textField3.getText() + "\n");
+                        JOptionPane.showMessageDialog(null,"Código do Drone: " + txtCodigo.getText() + "\n" +
+                                "Custo Fixo: " + txtCustoFixo.getText() + "\n" +
+                                "Autonomia: " + txtAutonomia.getText() + "\n" +
+                                "Quantidade Máxima de Pessoas: " + txtqtdMaxima.getText() + "\n");
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(null, "Erro de formatação: Digite números válidos.");
                         limpaField();
@@ -76,9 +76,9 @@ public class formJanelaCadastroDrone {
     }
 
     public void limpaField(){
-        textField1.setText("");
-        textField2.setText("");
-        textField3.setText("");
-        codigoField1.setText("");
+        txtCustoFixo.setText("");
+        txtAutonomia.setText("");
+        txtqtdMaxima.setText("");
+        txtCodigo.setText("");
     }
 }
