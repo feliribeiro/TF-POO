@@ -26,6 +26,7 @@ public class ACMEAirDrones extends JFrame {
         this.setSize(530, 450);
         this.setTitle("ACMEAirDrones");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 

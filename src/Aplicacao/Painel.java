@@ -45,6 +45,30 @@ public class Painel {
                 JanelaCadastroDrone JCD = new JanelaCadastroDrone();
             }
         });
+        cadastrarNovoTransporteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JanelaCadastraTransporte JCT = new JanelaCadastraTransporte();
+            }
+        });
+        mostrarRelatórioGeralButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,".");
+            }
+        });
+        salvarDadosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nome = JOptionPane.showInputDialog(null, "Digite o nome desejado:", "Nome do Arquivo", JOptionPane.PLAIN_MESSAGE);
+
+                if (nome != null && !nome.trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Nome do arquivo: " + nome, "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Nenhum nome foi digitado.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
     }
 
     public JPanel getPainel() {return Painel;}
