@@ -8,7 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="a646" class="javax.swing.JButton" binding="voltarButton" default-binding="true">
+      <component id="a646" class="javax.swing.JButton" binding="botaoVoltar" default-binding="true">
         <constraints>
           <grid row="8" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -16,7 +16,7 @@
           <text value="Voltar"/>
         </properties>
       </component>
-      <component id="92e03" class="javax.swing.JButton" binding="confirmarButton" default-binding="true">
+      <component id="92e03" class="javax.swing.JButton" binding="botaoConfirmar" default-binding="true">
         <constraints>
           <grid row="8" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -47,7 +47,7 @@
           <text value="Custo fixo:"/>
         </properties>
       </component>
-      <component id="bf449" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="bf449" class="javax.swing.JTextField" binding="txtCustoFixo" default-binding="true">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -64,7 +64,7 @@
           <text value="Autonomia:"/>
         </properties>
       </component>
-      <component id="3c361" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="3c361" class="javax.swing.JTextField" binding="txtAutonomia" default-binding="true">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -81,7 +81,7 @@
           <text value="Digite a quantidade maxima de pessoas:"/>
         </properties>
       </component>
-      <component id="96af4" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+      <component id="96af4" class="javax.swing.JTextField" binding="txtqtdMaxima" default-binding="true">
         <constraints>
           <grid row="7" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -89,7 +89,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="3444c" class="javax.swing.JButton" binding="mostrarButton" default-binding="true">
+      <component id="3444c" class="javax.swing.JButton" binding="botaoMostrar" default-binding="true">
         <constraints>
           <grid row="8" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -97,7 +97,7 @@
           <text value="Mostrar"/>
         </properties>
       </component>
-      <component id="1fc5a" class="javax.swing.JButton" binding="limparButton" default-binding="true">
+      <component id="1fc5a" class="javax.swing.JButton" binding="botaoLimpar" default-binding="true">
         <constraints>
           <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -110,7 +110,7 @@
           <grid row="0" column="0" row-span="9" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <component id="43be7" class="javax.swing.JTextField" binding="codigoField1">
+      <component id="43be7" class="javax.swing.JTextField" binding="txtCodigo">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
