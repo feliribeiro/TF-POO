@@ -69,6 +69,31 @@ public class Painel {
                 }
             }
         });
+        carregarDadosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Chame o método correspondente em ACMEAirDrones
+            }
+        });
+        salvarDadosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Chame o método correspondente em ACMEAirDrones
+            }
+        });
+        realizarLeituraDeDadosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Chame o método correspondente em ACMEAirDrones
+            }
+        });
+        processarTransportesPendentesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JanelaDronesPendentes JDP = new JanelaDronesPendentes();
+            }
+        });
+
     }
 
     public JPanel getPainel() {return Painel;}
