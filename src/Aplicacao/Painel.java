@@ -18,20 +18,7 @@ public class Painel {
     private JButton mostrarRelatórioGeralButton;
 
     public Painel() {
-
-        cadastrarNovoDroneButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Chame o método correspondente em ACMEAirDrones
-            }
-        });
-
-        cadastrarNovoTransporteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Chame o método correspondente em ACMEAirDrones
-            }
-        });
+        ACMEAirDrones ACMEAirDrone = new ACMEAirDrones();
 
         finalizarSistemaButton.addActionListener(new ActionListener() {
             @Override
@@ -54,22 +41,15 @@ public class Painel {
         mostrarRelatórioGeralButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,".");
+                ACMEAirDrone.mostraRelatorioGeral();
             }
         });
         salvarDadosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nome = JOptionPane.showInputDialog(null, "Digite o nome desejado:", "Nome do Arquivo", JOptionPane.PLAIN_MESSAGE);
-
-                if (nome != null && !nome.trim().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Nome do arquivo: " + nome, "Confirmação", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Nenhum nome foi digitado.", "Aviso", JOptionPane.WARNING_MESSAGE);
-                }
+                ACMEAirDrone.salvarDados();
             }
         });
     }
-
-    public JPanel getPainel() {return Painel;}
-}
+        public JPanel getPainel() {return Painel;}
+    }

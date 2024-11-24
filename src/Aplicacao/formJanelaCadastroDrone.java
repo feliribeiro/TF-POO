@@ -17,6 +17,8 @@ public class formJanelaCadastroDrone {
     private JTextField txtqtdMaxima;
     private JButton botaoMostrar;
     private JButton botaoLimpar;
+    private JComboBox opcoesDrone;
+    private JLabel tipoDeDrone;
     private JanelaCadastroDrone janelaCadastroDrone;
 
     public formJanelaCadastroDrone(JanelaCadastroDrone janelaCadastroDrone) {
