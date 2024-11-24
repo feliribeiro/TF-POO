@@ -1,11 +1,19 @@
 package Aplicacao;
 
+
+
 import Dados.Drone;
 import Dados.Transporte;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.swing.*;
 import Dados.CadastroTransporte;
 import Dados.CadastroDrone;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class ACMEAirDrones extends JFrame {
 
@@ -47,5 +55,21 @@ public class ACMEAirDrones extends JFrame {
                 cadastroTransporte.gerarRelatorioTransportes());
     }
 
+    public void salvarDados() {
+        String nomeArquivo = JOptionPane.showInputDialog(null, "Digite o nome do arquivo para salvar os dados:", "Nome do arquivo", JOptionPane.PLAIN_MESSAGE);
+        if (nomeArquivo == null || nomeArquivo.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nenhum nome foi digitado.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
+        ObjectMapper grava = new ObjectMapper();
+
+        try {
+            grava.writeValue(new File(nomeArquivo + "_drones.json"), cadastroDrone.getDrones());
+            grava.writeValue(new File(nomeArquivo + "_transportes.json"), cadastroTransporte.getTransportes());
+            JOptionPane.showMessageDialog(null, "Dados salvos com sucesso.");
+        }   catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao salvar os dados." + e.getMessage());
+        }
+    }
 }

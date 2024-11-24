@@ -65,5 +65,10 @@ public class CadastroDrone {
         return relatorio.toString();
     }
 
+    //METODO PARA GERAR O JSON SALVADADOS
+
+    public ArrayList<Drone> getDrones() {
+        return drones;
+    }
 
 }

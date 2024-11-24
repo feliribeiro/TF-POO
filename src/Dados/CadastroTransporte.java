@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CadastroTransporte {
 
-    private static List<Transporte> transportes;
+    private static ArrayList<Transporte> transportes;
 
     public CadastroTransporte() {
         this.transportes = new ArrayList<>();
@@ -58,6 +58,12 @@ public class CadastroTransporte {
         }
         System.out.println("Erro: Transporte não encontrado.");
     }
-    //metodo
+
+
+    // metodo para salvar os dados
+
+    public ArrayList<Transporte> getTransportes() {
+        return transportes;
+    }
 
 }
