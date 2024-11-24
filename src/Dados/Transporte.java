@@ -72,4 +72,7 @@ public abstract class Transporte {
     public void setSituacao(Estado situacao) {
         this.situacao = situacao;
     }
+
+
+
 }

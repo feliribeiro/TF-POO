@@ -5,23 +5,23 @@ import java.util.List;
 
 public class CadastroTransporte {
 
-    private static List<Transporte> transportes;
+    private static ArrayList<Transporte> transportes;
 
     public CadastroTransporte() {
         this.transportes = new ArrayList<>();
     }
 
-    public void addTransporte(Transporte transporte) {
-        if (verificaRepetido(transporte.getNumero())) {
+    public void addTransporte(Transporte t) {
+        if (verificaRepetido(t.getNumero())) {
             System.out.println("Erro: Transporte com número já existente.");
             return;
         }
-        transportes.add(transporte);
+        transportes.add(t);
     }
 
     public boolean verificaRepetido(int numeroTransporte) {
-        for (Transporte transporte : transportes) {
-            if (transporte.getNumero() == numeroTransporte) {
+        for (Transporte t : transportes) {
+            if (t.getNumero() == numeroTransporte) {
                 return true;
             }
         }
@@ -30,9 +30,9 @@ public class CadastroTransporte {
 
     public List<Transporte> getTransportesPendentes() {
         List<Transporte> pendentes = new ArrayList<>();
-        for (Transporte transporte : transportes) {
-            if (transporte.getSituacao() == Estado.PENDENTE) {
-                pendentes.add(transporte);
+        for (Transporte t : transportes) {
+            if (t.getSituacao() == Estado.PENDENTE) {
+                pendentes.add(t);
             }
         }
         return pendentes;
@@ -58,6 +58,12 @@ public class CadastroTransporte {
         }
         System.out.println("Erro: Transporte não encontrado.");
     }
-    //metodo
+
+
+    // metodo para salvar os dados
+
+    public ArrayList<Transporte> getTransportes() {
+        return transportes;
+    }
 
 }
