@@ -46,7 +46,7 @@ public class formJanelaCadastroDrone {
             public void actionPerformed(ActionEvent e) {
 
                 if (cd.eRepetido(Integer.parseInt(txtCodigo.getText()))){
-                    JOptionPane.showMessageDialog(null, "Erro: Este código já foi utilizado no cadastro de outro drone."+"\n");
+                    JOptionPane.showMessageDialog(null, "Este codigo já foi utilizado no cadastro de outro drone."+"\n");
                     limpaField();
                 } else {
 
@@ -61,13 +61,11 @@ public class formJanelaCadastroDrone {
                                 "Autonomia: " + txtAutonomia.getText() + "\n" +
                                 "Quantidade Máxima de Pessoas: " + txtqtdMaxima.getText() + "\n");
                     } catch (NumberFormatException ex) {
-                        JOptionPane.showMessageDialog(null, "Erro: Insira valores válidos para Custo fixo e autonomia.",
-                                "Erro de Entrada", JOptionPane.ERROR_MESSAGE);
-                    } catch (IllegalArgumentException ex) {
-                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro de Validação", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Erro de formatação: Digite números válidos.");
+                        limpaField();
                     } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(null, "Erro inesperado: " + ex.getMessage(),
-                                "Erro", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Erro ao adicionar drone: " + ex.getMessage());
+                        limpaField();
                     }
                 }
             }
