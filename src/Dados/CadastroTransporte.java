@@ -30,6 +30,8 @@ public class CadastroTransporte {
         return false;
     }
 
+
+
     public Queue<Transporte> getTransportesPendentes() {
         Queue<Transporte> pendentes = new LinkedList<>();
         for (Transporte t : transportes) {
@@ -51,18 +53,25 @@ public class CadastroTransporte {
         return relatorio.toString();
     }
 
-    public void alterarSituacao(int numeroTransporte, Estado situacao) {
+
+
+    public String alterarSituacao(int numeroTransporte, Estado situacao) {
+
         for (Transporte transporte : transportes) {
+
             if (transporte.getNumero() == numeroTransporte) {
-                transporte.setSituacao(situacao);
-                return;
+                if(transporte.getSituacao() == Estado.TERMINADO && situacao == Estado.CANCELADO){
+                    return "Erro: Situação não pode ser alterada.";
+                }else{
+                    transporte.setSituacao(situacao);
+                    return "Situação alterada com sucesso.";
+                }
             }
         }
-        System.out.println("Erro: Transporte não encontrado.");
+       return "Erro: Transporte não encontrado.";
     }
 
 
-    // metodo para salvar os dados
 
     public Queue<Transporte> getTransportes() {
         return transportes;

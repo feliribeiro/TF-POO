@@ -1,4 +1,18 @@
 package Aplicacao;
 
-public class JanelaAlteraSituacao {
+import javax.swing.*;
+
+public class JanelaAlteraSituacao extends JDialog {
+    private formJanelaAlteraSituacao formJanelaAlteraSituacao;
+
+    public JanelaAlteraSituacao() {
+        super();
+        formJanelaAlteraSituacao formJanelaAlteraSituacao = new formJanelaAlteraSituacao(this);
+        this.setContentPane(formJanelaAlteraSituacao.getPainel());
+        this.setTitle("Alterar Situação");
+        this.pack();
+        this.setSize(800,400);
+        this.setModal(true);
+        this.setVisible(true);
+    }
 }

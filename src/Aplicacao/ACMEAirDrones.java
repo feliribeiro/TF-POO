@@ -4,9 +4,7 @@ package Aplicacao;
 
 import Dados.*;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.swing.*;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -59,16 +57,6 @@ public class ACMEAirDrones extends JFrame {
         if (nomeArquivo == null || nomeArquivo.trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nenhum nome foi digitado.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
-        }
-
-        ObjectMapper grava = new ObjectMapper();
-
-        try {
-            grava.writeValue(new File(nomeArquivo + "_drones.json"), cadastroDrone.getDrones());
-            grava.writeValue(new File(nomeArquivo + "_transportes.json"), cadastroTransporte.getTransportes());
-            JOptionPane.showMessageDialog(null, "Dados salvos com sucesso.");
-        }   catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao salvar os dados." + e.getMessage());
         }
     }
 
