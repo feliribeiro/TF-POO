@@ -1,14 +1,16 @@
 package Dados;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class CadastroTransporte {
 
-    private static ArrayList<Transporte> transportes;
+    private static Queue<Transporte> transportes;
 
     public CadastroTransporte() {
-        this.transportes = new ArrayList<>();
+        this.transportes = new LinkedList<>();
     }
 
     public void addTransporte(Transporte t) {
@@ -28,8 +30,8 @@ public class CadastroTransporte {
         return false;
     }
 
-    public List<Transporte> getTransportesPendentes() {
-        List<Transporte> pendentes = new ArrayList<>();
+    public Queue<Transporte> getTransportesPendentes() {
+        Queue<Transporte> pendentes = new LinkedList<>();
         for (Transporte t : transportes) {
             if (t.getSituacao() == Estado.PENDENTE) {
                 pendentes.add(t);
@@ -62,7 +64,7 @@ public class CadastroTransporte {
 
     // metodo para salvar os dados
 
-    public ArrayList<Transporte> getTransportes() {
+    public Queue<Transporte> getTransportes() {
         return transportes;
     }
 
