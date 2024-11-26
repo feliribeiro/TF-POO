@@ -4,7 +4,7 @@ package Aplicacao;
 
 import Dados.*;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.swing.*;
 
 import java.io.File;
@@ -60,9 +60,9 @@ public class ACMEAirDrones extends JFrame {
             JOptionPane.showMessageDialog(null, "Nenhum nome foi digitado.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
-    public void salvarDados() {}
+   // public void salvarDados() {}
 
-    public void carregarDados() {
+   // public void carregarDados() {
         String nomeArquivoCarregaDados = JOptionPane.showInputDialog(null, "Digite o nome do arquivo","Nome do arquivo", JOptionPane.PLAIN_MESSAGE);
         if (nomeArquivoCarregaDados == null || nomeArquivoCarregaDados.trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nenhum nome foi digitado.", "Aviso", JOptionPane.WARNING_MESSAGE);
