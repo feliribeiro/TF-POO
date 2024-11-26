@@ -6,25 +6,27 @@ import java.util.List;
 import java.util.Queue;
 
 public class CadastroTransporte {
-
-    private static Queue<Transporte> transportes;
+    private Queue<Transporte> transportes;
+    private CadastroDrone cadastroDrone;
 
     public CadastroTransporte() {
         this.transportes = new LinkedList<>();
+        CadastroDrone cadastroDrone = new CadastroDrone();
     }
 
     public boolean addTransporte(Transporte t) {
         if (verificaRepetido(t.getNumero())) {
-            System.out.println("Erro: Transporte com número já existente.");
             return false;
         }
-        Drone droneDisponivel = new CadastroDrone().getDroneDisponivel(t.getTipo());
-        if (droneDisponivel != null) {
-            t.setDrone(droneDisponivel);
-            transportes.add(t);
-            t.setSituacao(Estado.ALOCADO);
-            return true;
-        } else return false;
+        for (Drone d : cadastroDrone.getDrones()) {
+            if (d.getTipo() == t.getTipo()) {
+                t.setDrone(d);
+                transportes.add(t);
+                t.setSituacao(Estado.ALOCADO);
+                return true;
+            }
+        }
+            return false;
     }
 
     public boolean verificaRepetido(int numeroTransporte) {

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class CadastroDrone {
 
     private ArrayList<Drone> drones;
-
     private Comparador c;
 
     public CadastroDrone() {
