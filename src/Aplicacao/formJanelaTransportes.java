@@ -70,8 +70,9 @@ public class formJanelaTransportes {
                             String quantidadePessoas = JOptionPane.showInputDialog(null, "Digite a quantidade máxima de pessoas:", "Quantidade de Pessoas", JOptionPane.QUESTION_MESSAGE);
                             if (quantidadePessoas != null && !quantidadePessoas.isEmpty()) {
                                 int qtdMaxima = Integer.parseInt(quantidadePessoas);
-                                ct.addTransporte(new TransportePessoal(1, numero, nomeClientes, descricao, peso, latitudeOrigem, latitudeDestino, longitudeOrigem, longitudeDestino, Estado.PENDENTE, qtdMaxima));
-                                JOptionPane.showMessageDialog(null, "Transporte Pessoal cadastrado com sucesso!");
+                                if(ct.addTransporte(new TransportePessoal(1, numero, nomeClientes, descricao, peso, latitudeOrigem, latitudeDestino, longitudeOrigem, longitudeDestino, Estado.PENDENTE, qtdMaxima))){
+                                    JOptionPane.showMessageDialog(null, "Transporte Pessoal cadastrado com sucesso!");
+                                } else JOptionPane.showMessageDialog(null, "Erro ao adicionar transporte.", "Erro", JOptionPane.ERROR_MESSAGE);
                             } else {
                                 JOptionPane.showMessageDialog(null, "Quantidade de pessoas não informada.");
                             }
@@ -88,8 +89,10 @@ public class formJanelaTransportes {
                                 } else {
                                     cargaPerigosa = false;
                                 }
-                                ct.addTransporte(new TransporteCargaInanimada(2, numero, nomeClientes, descricao, peso, latitudeOrigem, latitudeDestino, longitudeOrigem, longitudeDestino, Estado.PENDENTE, cargaPerigosa));
-                                JOptionPane.showMessageDialog(null, "Transporte de Carga cadastrado com sucesso!");
+                                if(ct.addTransporte(new TransporteCargaInanimada(2, numero, nomeClientes, descricao, peso, latitudeOrigem, latitudeDestino, longitudeOrigem, longitudeDestino, Estado.PENDENTE, cargaPerigosa))){
+                                    JOptionPane.showMessageDialog(null, "Transporte de Carga Inanimada cadastrado com sucesso!");
+                                } else JOptionPane.showMessageDialog(null, "Erro ao adicionar transporte.", "Erro", JOptionPane.ERROR_MESSAGE);
+
                             } else {
                                 JOptionPane.showMessageDialog(null, "Carga perigosa não informada.");
                             }
@@ -100,8 +103,10 @@ public class formJanelaTransportes {
                             if (temperaturaMax != null && !temperaturaMax.isEmpty() && temperaturaMin != null && !temperaturaMin.isEmpty()) {
                                 double tempMax = Double.parseDouble(temperaturaMax);
                                 double tempMin = Double.parseDouble(temperaturaMin);
-                                ct.addTransporte(new TransporteCargaViva(3, numero, nomeClientes, descricao, peso, latitudeOrigem, latitudeDestino, longitudeOrigem, longitudeDestino, Estado.PENDENTE, tempMin, tempMax));
-                                JOptionPane.showMessageDialog(null, "Transporte de Carga Viva cadastrado com sucesso!");
+                                if(ct.addTransporte(new TransporteCargaViva(3, numero, nomeClientes, descricao, peso, latitudeOrigem, latitudeDestino, longitudeOrigem, longitudeDestino, Estado.PENDENTE, tempMin, tempMax))) {
+                                    JOptionPane.showMessageDialog(null, "Transporte de Carga Viva cadastrado com sucesso!");
+                                } else JOptionPane.showMessageDialog(null, "Erro ao adicionar transporte.", "Erro", JOptionPane.ERROR_MESSAGE);
+
                             } else {
                                 JOptionPane.showMessageDialog(null, "Temperatura não informada.");
                             }
