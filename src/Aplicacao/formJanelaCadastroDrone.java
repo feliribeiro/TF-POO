@@ -1,6 +1,8 @@
 package Aplicacao;
 
 import Dados.CadastroDrone;
+import Dados.DroneCargaInanimada;
+import Dados.DroneCargaViva;
 import Dados.DronePessoal;
 
 import javax.swing.*;
@@ -19,6 +21,8 @@ public class formJanelaCadastroDrone {
     private JButton botaoLimpar;
     private JComboBox opcoesDrone;
     private JLabel tipoDeDrone;
+    private JCheckBox CargaAnimada;
+    private JCheckBox protegidoOuClimatizadoCheckBox;
     private JanelaCadastroDrone janelaCadastroDrone;
 
     public formJanelaCadastroDrone(JanelaCadastroDrone janelaCadastroDrone) {
@@ -51,17 +55,46 @@ public class formJanelaCadastroDrone {
                     JOptionPane.showMessageDialog(null, "Este codigo já foi utilizado no cadastro de outro drone."+"\n");
                     limpaField();
                 } else {
-
                     try {
-                        int codigo = Integer.parseInt(txtCodigo.getText());
-                        double custoFixo = Double.parseDouble(txtCustoFixo.getText());
-                        double autonomia = Double.parseDouble(txtAutonomia.getText());
-                        int qtdMaxima = Integer.parseInt(txtqtdMaxima.getText());
-                        cd.addDrone(new DronePessoal(codigo, custoFixo, autonomia, qtdMaxima));
-                        JOptionPane.showMessageDialog(null,"Código do Drone: " + txtCodigo.getText() + "\n" +
-                                "Custo Fixo: " + txtCustoFixo.getText() + "\n" +
-                                "Autonomia: " + txtAutonomia.getText() + "\n" +
-                                "Quantidade Máxima de Pessoas: " + txtqtdMaxima.getText() + "\n");
+                        if (opcoesDrone.getSelectedItem().toString().equals("Drone Pessoal")){
+                            CargaAnimada.setVisible(false);
+                            protegidoOuClimatizadoCheckBox.setVisible(false);
+                            int codigo = Integer.parseInt(txtCodigo.getText());
+                            double custoFixo = Double.parseDouble(txtCustoFixo.getText());
+                            double autonomia = Double.parseDouble(txtAutonomia.getText());
+                            int qtdMaxima = Integer.parseInt(txtqtdMaxima.getText());
+                            cd.addDrone(new DronePessoal(codigo, custoFixo, autonomia, qtdMaxima));
+                            JOptionPane.showMessageDialog(null,"Código do Drone: " + txtCodigo.getText() + "\n" +
+                                    "Custo Fixo: " + txtCustoFixo.getText() + "\n" +
+                                    "Autonomia: " + txtAutonomia.getText() + "\n" +
+                                    "Quantidade Máxima de Pessoas: " + txtqtdMaxima.getText() + "\n");
+                        } else {
+                            if (CargaAnimada.isSelected()){
+                                int codigo = Integer.parseInt(txtCodigo.getText());
+                                double custoFixo = Double.parseDouble(txtCustoFixo.getText());
+                                double autonomia = Double.parseDouble(txtAutonomia.getText());
+                                int qtdMaxima = Integer.parseInt(txtqtdMaxima.getText());
+                                boolean protegidoOuClimatizado = protegidoOuClimatizadoCheckBox.isSelected();
+                                cd.addDrone(new DroneCargaViva(codigo, custoFixo, autonomia, qtdMaxima, protegidoOuClimatizado));
+                                JOptionPane.showMessageDialog(null,"Código do Drone: " + txtCodigo.getText() + "\n" +
+                                        "Custo Fixo: " + txtCustoFixo.getText() + "\n" +
+                                        "Autonomia: " + txtAutonomia.getText() + "\n" +
+                                        "Quantidade Máxima de Pessoas: " + txtqtdMaxima.getText() +
+                                        "Climatizaçao: " + protegidoOuClimatizado+ "\n");
+                            } else {
+                                int codigo = Integer.parseInt(txtCodigo.getText());
+                                double custoFixo = Double.parseDouble(txtCustoFixo.getText());
+                                double autonomia = Double.parseDouble(txtAutonomia.getText());
+                                int qtdMaxima = Integer.parseInt(txtqtdMaxima.getText());
+                                boolean protegidoOuClimatizado = protegidoOuClimatizadoCheckBox.isSelected();
+                                cd.addDrone(new DroneCargaInanimada(codigo, custoFixo, autonomia, qtdMaxima, protegidoOuClimatizado));
+                                JOptionPane.showMessageDialog(null,"Código do Drone: " + txtCodigo.getText() + "\n" +
+                                        "Custo Fixo: " + txtCustoFixo.getText() + "\n" +
+                                        "Autonomia: " + txtAutonomia.getText() + "\n" +
+                                        "Quantidade Máxima de Pessoas: " + txtqtdMaxima.getText() +
+                                        "Proteçao: " + protegidoOuClimatizado+ "\n");
+                            }
+                        }
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(null, "Erro de formatação: Digite números válidos.");
                         limpaField();
