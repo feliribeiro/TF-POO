@@ -59,7 +59,7 @@ public class CadastroTransporte {
 
         for (Transporte transporte : transportes) {
             if (transporte.getNumero() == numeroTransporte) {
-                if(transporte.getSituacao() == Estado.TERMINADO && situacao == Estado.CANCELADO){//Nao pode ser nenhum dos dois para alterar
+                if(transporte.getSituacao() == Estado.TERMINADO && situacao == Estado.CANCELADO){//
                     return "Erro: Situação não pode ser alterada.";
                 }else{
                     transporte.setSituacao(situacao);
