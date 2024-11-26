@@ -52,18 +52,15 @@ public class CadastroTransporte {
         }
         StringBuilder relatorio = new StringBuilder("Relatório de Transportes:\n");
         for (Transporte transporte : transportes) {
-            relatorio.append(transporte.toString()).append("\n\n");
+            relatorio.append(transporte.toSuperString()).append("\n\n");
         }
         return relatorio.toString();
     }
 
-
     public String alterarSituacao(int numeroTransporte, String situacao) {
 
         for (Transporte transporte : transportes) {
-
             if (transporte.getNumero() == numeroTransporte) {
-
                 if (transporte.getSituacao() == Estado.TERMINADO || transporte.getSituacao() == Estado.CANCELADO) {//
                     return "Erro: Situação não pode ser alterada.";
                 } else if (situacao.equalsIgnoreCase("PENDENTE")) {
@@ -77,14 +74,7 @@ public class CadastroTransporte {
         }
         return "Erro: Transporte não encontrado.";
     }
-
-    @Override
-    public String toString() {
-        return "CadastroTransporte{}";
-    }
-
     public Queue<Transporte> getTransportes() {
         return transportes;
     }
-
 }

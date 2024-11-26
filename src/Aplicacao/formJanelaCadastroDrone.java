@@ -32,7 +32,7 @@ public class formJanelaCadastroDrone {
         botaoVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                janelaCadastroDrone.setVisible(true);
+                janelaCadastroDrone.setVisible(false);
             }
         });
         botaoLimpar.addActionListener(new ActionListener() {
@@ -44,28 +44,26 @@ public class formJanelaCadastroDrone {
         botaoMostrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 JOptionPane.showMessageDialog(null,cd.mostraDrones());
             }
         });
         botaoConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 if (cd.eRepetido(Integer.parseInt(txtCodigo.getText()))){
                     JOptionPane.showMessageDialog(null, "Este codigo já foi utilizado no cadastro de outro drone."+"\n");
                     limpaField();
                 } else {
                     try {
                         if (opcoesDrone.getSelectedItem().toString().equals("Drone Pessoal")){
-                            CargaAnimada.setVisible(false);
-                            protegidoOuClimatizadoCheckBox.setVisible(false);
+                            //CargaAnimada.setVisible(false);
+                            //protegidoOuClimatizadoCheckBox.setVisible(false);
                             int codigo = Integer.parseInt(txtCodigo.getText());
                             double custoFixo = Double.parseDouble(txtCustoFixo.getText());
                             double autonomia = Double.parseDouble(txtAutonomia.getText());
                             int qtdMaxima = Integer.parseInt(txtqtdMaxima.getText());
                             cd.addDrone(new DronePessoal(codigo, custoFixo, autonomia, 1, qtdMaxima));
-                            JOptionPane.showMessageDialog(null,"Código do Drone: " + txtCodigo.getText() + "\n" +
+                            JOptionPane.showMessageDialog(null,"Código do Drone Pessoal: " + txtCodigo.getText() + "\n" +
                                     "Custo Fixo: " + txtCustoFixo.getText() + "\n" +
                                     "Autonomia: " + txtAutonomia.getText() + "\n" +
                                     "Quantidade Máxima de Pessoas: " + txtqtdMaxima.getText() + "\n");
@@ -77,14 +75,14 @@ public class formJanelaCadastroDrone {
                             boolean protegidoOuClimatizado = protegidoOuClimatizadoCheckBox.isSelected();
                             if (CargaAnimada.isSelected()){
                                 cd.addDrone(new DroneCargaViva(codigo, custoFixo, autonomia, 3, pesoMaximo, protegidoOuClimatizado));
-                                JOptionPane.showMessageDialog(null,"Código do Drone: " + txtCodigo.getText() + "\n" +
+                                JOptionPane.showMessageDialog(null,"Código do Drone de Carga Viva: " + txtCodigo.getText() + "\n" +
                                         "Custo Fixo: " + txtCustoFixo.getText() + "\n" +
                                         "Autonomia: " + txtAutonomia.getText() + "\n" +
                                         "Peso Maximo: " + txtqtdMaxima.getText() + "\n" +
                                         "Climatizaçao: " + protegidoOuClimatizado+ "\n");
                             } else {
                                 cd.addDrone(new DroneCargaInanimada(codigo, custoFixo, autonomia, 2, pesoMaximo, protegidoOuClimatizado));
-                                JOptionPane.showMessageDialog(null,"Código do Drone: " + txtCodigo.getText() + "\n" +
+                                JOptionPane.showMessageDialog(null,"Código do Drone de Carga Inanimada: " + txtCodigo.getText() + "\n" +
                                         "Custo Fixo: " + txtCustoFixo.getText() + "\n" +
                                         "Autonomia: " + txtAutonomia.getText() + "\n" +
                                         "Peso Maximo: " + txtqtdMaxima.getText() + "\n" +

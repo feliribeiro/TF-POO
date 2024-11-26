@@ -22,9 +22,6 @@ public class formJanelaAlteraSituacao {
 
     public formJanelaAlteraSituacao(JanelaAlteraSituacao janelaAlteraSituacao) {
         this.janelaAlteraSituacao = janelaAlteraSituacao;
-
-
-
         textField1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
