@@ -3,8 +3,8 @@ package Dados;
 public class DroneCargaViva extends DroneCarga {
     private boolean climatizado;
 
-    public DroneCargaViva(int codigo, double custoFixo, double autonomia, double pesoMaximo, boolean climatizado) {
-        super(codigo, custoFixo, autonomia, pesoMaximo);
+    public DroneCargaViva(int codigo, double custoFixo, double autonomia, int tipo, double pesoMaximo, boolean climatizado) {
+        super(codigo, custoFixo, autonomia, tipo, pesoMaximo);
         this.climatizado = climatizado;
     }
 

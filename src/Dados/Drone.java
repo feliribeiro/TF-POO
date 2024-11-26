@@ -4,11 +4,13 @@ public abstract class Drone {
     private int codigo;
     private double custoFixo;
     private double autonomia;
+    private int tipo;
 
-    public Drone(int codigo, double custoFixo, double autonomia) {
+    public Drone(int codigo, double custoFixo, double autonomia, int tipo) {
         this.codigo = codigo;
         this.custoFixo = custoFixo;
         this.autonomia = autonomia;
+        this.tipo = this.tipo;
     }
 
 
@@ -19,12 +21,19 @@ public abstract class Drone {
     }
 
     public double getCustoFixo() {
-
         return custoFixo;
     }
 
     public double getAutonomia() {
         return autonomia;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
     }
 
     public String toString() {

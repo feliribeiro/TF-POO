@@ -18,7 +18,13 @@ public class CadastroTransporte {
             System.out.println("Erro: Transporte com número já existente.");
             return;
         }
-        transportes.add(t);
+        Drone droneDisponivel = new CadastroDrone().getDroneDisponivel(t.getTipo());
+        if (droneDisponivel != null) {
+            t.setDrone(droneDisponivel);
+            transportes.add(t);
+            t.setSituacao(Estado.ALOCADO);
+            System.out.println("Transporte e drone vinculado cadastrado com sucesso.");
+        } else System.out.println("Erro: Drone não disponível para o transporte.");
     }
 
     public boolean verificaRepetido(int numeroTransporte) {
@@ -29,8 +35,6 @@ public class CadastroTransporte {
         }
         return false;
     }
-
-
 
     public Queue<Transporte> getTransportesPendentes() {
         Queue<Transporte> pendentes = new LinkedList<>();
@@ -54,27 +58,25 @@ public class CadastroTransporte {
     }
 
 
-
     public String alterarSituacao(int numeroTransporte, String situacao) {
 
         for (Transporte transporte : transportes) {
 
             if (transporte.getNumero() == numeroTransporte) {
 
-                if(transporte.getSituacao() == Estado.TERMINADO || transporte.getSituacao() == Estado.CANCELADO){//
+                if (transporte.getSituacao() == Estado.TERMINADO || transporte.getSituacao() == Estado.CANCELADO) {//
                     return "Erro: Situação não pode ser alterada.";
-                }else if(situacao.equalsIgnoreCase("PENDENTE")){
+                } else if (situacao.equalsIgnoreCase("PENDENTE")) {
                     transporte.setSituacao(Estado.PENDENTE);
                     return "Situação alterada com sucesso.";
                 } else if (situacao.equalsIgnoreCase("ALOCADO")) {
                     transporte.setSituacao(Estado.ALOCADO);
                     return "Situação alterada com sucesso.";
                 }
-                }
+            }
         }
-       return "Erro: Transporte não encontrado.";
+        return "Erro: Transporte não encontrado.";
     }
-
 
 
     public Queue<Transporte> getTransportes() {
