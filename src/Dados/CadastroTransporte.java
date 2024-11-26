@@ -55,17 +55,22 @@ public class CadastroTransporte {
 
 
 
-    public String alterarSituacao(int numeroTransporte, Estado situacao) {
+    public String alterarSituacao(int numeroTransporte, String situacao) {
 
         for (Transporte transporte : transportes) {
+
             if (transporte.getNumero() == numeroTransporte) {
-                if(transporte.getSituacao() == Estado.TERMINADO && situacao == Estado.CANCELADO){//
+
+                if(transporte.getSituacao() == Estado.TERMINADO || transporte.getSituacao() == Estado.CANCELADO){//
                     return "Erro: Situação não pode ser alterada.";
-                }else{
-                    transporte.setSituacao(situacao);
+                }else if(situacao.equalsIgnoreCase("PENDENTE")){
+                    transporte.setSituacao(Estado.PENDENTE);
+                    return "Situação alterada com sucesso.";
+                } else if (situacao.equalsIgnoreCase("ALOCADO")) {
+                    transporte.setSituacao(Estado.ALOCADO);
                     return "Situação alterada com sucesso.";
                 }
-            }
+                }
         }
        return "Erro: Transporte não encontrado.";
     }
