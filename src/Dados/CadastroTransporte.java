@@ -79,4 +79,14 @@ public class CadastroTransporte {
     public Queue<Transporte> getTransportes() {
         return transportes;
     }
+
+
+    public String getTransportePeloNumero(int numero) {
+        for (Transporte t : transportes) {
+            if (t.getNumero() == numero) {
+                return t.toSuperString();
+            }
+        }
+        return "Drone não encontrado.";
+    }
 }
