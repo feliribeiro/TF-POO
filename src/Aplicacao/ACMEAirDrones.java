@@ -7,9 +7,7 @@ import Dados.*;
 //import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.swing.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -30,7 +28,7 @@ public class ACMEAirDrones extends JFrame {
     public void executar() {
         form = new Painel();
         this.add(form.getPainel());
-        this.setSize(530, 450);
+        this.setSize(550, 500);
         this.setTitle("ACMEAirDrones");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -54,13 +52,23 @@ public class ACMEAirDrones extends JFrame {
                 cadastroTransporte.gerarRelatorioTransportes());
     }
 
-    public void salvarDados() {
+    public void salvarDados() throws IOException {
         String nomeArquivo = JOptionPane.showInputDialog(null, "Digite o nome do arquivo para salvar os dados:", "Nome do arquivo", JOptionPane.PLAIN_MESSAGE);
         if (nomeArquivo == null || nomeArquivo.trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nenhum nome foi digitado.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
+        } else {
+           try {
+               File file = new File(nomeArquivo.concat(".txt"));
+               FileWriter fw = new FileWriter(file);
+               BufferedWriter bufferedWriter = new BufferedWriter(fw);
+
+               bufferedWriter.write(cadastroDrone.gerarRelatorioDrones());
+
+           } catch (IOException e){
+               JOptionPane.showMessageDialog(null, nomeArquivo, e.getMessage(), JOptionPane.WARNING_MESSAGE);
+           }
         }
-   // public void salvarDados() {}
 
    // public void carregarDados() {
         String nomeArquivoCarregaDados = JOptionPane.showInputDialog(null, "Digite o nome do arquivo","Nome do arquivo", JOptionPane.PLAIN_MESSAGE);

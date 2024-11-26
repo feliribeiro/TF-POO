@@ -1,8 +1,15 @@
 package Aplicacao;
 
+import Dados.DroneCargaInanimada;
+import Dados.DroneCargaViva;
+import Dados.DronePessoal;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
 
 public class Painel {
     private JPanel Painel;
@@ -23,15 +30,11 @@ public class Painel {
 
         finalizarSistemaButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-
-                System.exit(0);
-            }
+            public void actionPerformed(ActionEvent e) {System.exit(0);}
         });
         cadastrarNovoDroneButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 JanelaCadastroDrone JCD = new JanelaCadastroDrone();
             }
         });
@@ -44,14 +47,12 @@ public class Painel {
         mostrarRelatórioGeralButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 ACMEAirDrone.mostraRelatorioGeral();
             }
         });
         salvarDadosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 ACMEAirDrone.salvarDados();
             }
         });
@@ -70,7 +71,40 @@ public class Painel {
         realizarLeituraDeDadosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Chame o método correspondente em ACMEAirDrones
+                String arquivo = JOptionPane.showInputDialog(null, "Digite o nome do arquivo.");
+                try{
+                    Scanner input = new Scanner(new FileReader(arquivo));
+                    while(input.hasNextLine()){
+                        String linha = input.nextLine();
+                        String delimeter = ";";
+                        String[] dados = linha.split(delimeter);
+                        if (dados[0].equals("1")){
+                            int codigo = Integer.parseInt(dados[1]);
+                            double custoFixo = Double.parseDouble(dados[2]);
+                            double autonomia = Double.parseDouble(dados[3]);
+                            int qtdMaxima = Integer.parseInt(dados[4]);
+                            ACMEAirDrone.cadastrarNovoDrone(new DronePessoal(codigo,custoFixo,autonomia,qtdMaxima));
+                        }
+                        if (dados[0].equals("3")){
+                            int codigo = Integer.parseInt(dados[1]);
+                            double custoFixo = Double.parseDouble(dados[2]);
+                            double autonomia = Double.parseDouble(dados[3]);
+                            double pesoMaximo = Double.parseDouble(dados[4]);
+                            boolean climatizado = Boolean.parseBoolean(dados[5]);
+                            ACMEAirDrone.cadastrarNovoDrone(new DroneCargaViva(codigo,custoFixo,autonomia,pesoMaximo,climatizado));
+                        }
+                        if (dados[0].equals("2")){
+                            int codigo = Integer.parseInt(dados[1]);
+                            double custoFixo = Double.parseDouble(dados[2]);
+                            double autonomia = Double.parseDouble(dados[3]);
+                            double pesoMaximo = Double.parseDouble(dados[4]);
+                            boolean protecao = Boolean.parseBoolean(dados[5]);
+                            ACMEAirDrone.cadastrarNovoDrone(new DroneCargaInanimada(codigo,custoFixo,autonomia,pesoMaximo,protecao));
+                        }
+                    }
+                } catch (FileNotFoundException e1) {
+                    JOptionPane.showMessageDialog(null, e1.getMessage());
+                }
             }
         });
         processarTransportesPendentesButton.addActionListener(new ActionListener() {

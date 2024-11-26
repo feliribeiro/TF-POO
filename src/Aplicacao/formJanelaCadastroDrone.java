@@ -73,21 +73,21 @@ public class formJanelaCadastroDrone {
                             int codigo = Integer.parseInt(txtCodigo.getText());
                             double custoFixo = Double.parseDouble(txtCustoFixo.getText());
                             double autonomia = Double.parseDouble(txtAutonomia.getText());
-                            int qtdMaxima = Integer.parseInt(txtqtdMaxima.getText());
+                            int pesoMaximo = Integer.parseInt(txtqtdMaxima.getText());
                             boolean protegidoOuClimatizado = protegidoOuClimatizadoCheckBox.isSelected();
                             if (CargaAnimada.isSelected()){
-                                cd.addDrone(new DroneCargaViva(codigo, custoFixo, autonomia, qtdMaxima, protegidoOuClimatizado));
+                                cd.addDrone(new DroneCargaViva(codigo, custoFixo, autonomia, pesoMaximo, protegidoOuClimatizado));
                                 JOptionPane.showMessageDialog(null,"Código do Drone: " + txtCodigo.getText() + "\n" +
                                         "Custo Fixo: " + txtCustoFixo.getText() + "\n" +
                                         "Autonomia: " + txtAutonomia.getText() + "\n" +
-                                        "Quantidade Máxima de Pessoas: " + txtqtdMaxima.getText() + "\n" +
+                                        "Peso Maximo: " + txtqtdMaxima.getText() + "\n" +
                                         "Climatizaçao: " + protegidoOuClimatizado+ "\n");
                             } else {
-                                cd.addDrone(new DroneCargaInanimada(codigo, custoFixo, autonomia, qtdMaxima, protegidoOuClimatizado));
+                                cd.addDrone(new DroneCargaInanimada(codigo, custoFixo, autonomia, pesoMaximo, protegidoOuClimatizado));
                                 JOptionPane.showMessageDialog(null,"Código do Drone: " + txtCodigo.getText() + "\n" +
                                         "Custo Fixo: " + txtCustoFixo.getText() + "\n" +
                                         "Autonomia: " + txtAutonomia.getText() + "\n" +
-                                        "Quantidade Máxima de Pessoas: " + txtqtdMaxima.getText() + "\n" +
+                                        "Peso Maximo: " + txtqtdMaxima.getText() + "\n" +
                                         "Proteçao: "+ protegidoOuClimatizado+ "\n");
                             }
                         }
