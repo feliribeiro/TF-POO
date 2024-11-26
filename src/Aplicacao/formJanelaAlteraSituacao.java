@@ -44,8 +44,7 @@ public class formJanelaAlteraSituacao {
             public void actionPerformed(ActionEvent e) {
                 textField1.getText();
                 textField2.getText();
-                String metodoAltera = ct.alterarSituacao(Integer.parseInt(textField1.getText()),textField2.getText());
-                JOptionPane.showMessageDialog(null, metodoAltera);
+                JOptionPane.showMessageDialog(null, ct.alterarSituacao(Integer.parseInt(textField1.getText()),textField2.getText()));// Código para confirmar a alteração e aparece a a
 
 
             }
