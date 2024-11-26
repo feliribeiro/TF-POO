@@ -16,6 +16,7 @@ public class Painel {
     private JButton alterarASituaçãoDeButton;
     private JButton mostrarTodosOsTransportesButton;
     private JButton mostrarRelatórioGeralButton;
+    private Dados.CadastroTransporte ct = new Dados.CadastroTransporte();
 
     public Painel() {
         ACMEAirDrones ACMEAirDrone = new ACMEAirDrones();
@@ -23,12 +24,14 @@ public class Painel {
         finalizarSistemaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 System.exit(0);
             }
         });
         cadastrarNovoDroneButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 JanelaCadastroDrone JCD = new JanelaCadastroDrone();
             }
         });
@@ -41,15 +44,68 @@ public class Painel {
         mostrarRelatórioGeralButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 ACMEAirDrone.mostraRelatorioGeral();
             }
         });
         salvarDadosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 ACMEAirDrone.salvarDados();
             }
         });
+        carregarDadosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Chame o método correspondente em ACMEAirDrones
+            }
+        });
+        salvarDadosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Chame o método correspondente em ACMEAirDrones
+            }
+        });
+        realizarLeituraDeDadosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Chame o método correspondente em ACMEAirDrones
+            }
+        });
+        processarTransportesPendentesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (ct.getTransportesPendentes().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Nenhum transporte pendente.");
+                } else {
+                    JOptionPane.showMessageDialog(null, ct.getTransportesPendentes());
+                }
+
+            }
+        });
+
+        mostrarTodosOsTransportesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    if(ct.getTransportesPendentes().isEmpty()){
+                        JOptionPane.showMessageDialog(null, "Nenhum transporte pendente.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, ct.gerarRelatorioTransportes());
+                    }
+
+            }
+        });
+        alterarASituaçãoDeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JanelaAlteraSituacao JAS = new JanelaAlteraSituacao();
+
+            }
+        });
     }
-        public JPanel getPainel() {return Painel;}
+        public JPanel getPainel() {
+
+        return Painel;
+    }
     }

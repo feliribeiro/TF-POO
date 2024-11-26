@@ -14,6 +14,8 @@ public class JanelaCadastroDrone extends JDialog {
         this.setSize(800,400);
         this.setModal(true);
         this.setVisible(true);
+
+
     }
 }
 

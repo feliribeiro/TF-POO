@@ -32,7 +32,7 @@ public class formJanelaCadastroDrone {
         botaoVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                janelaCadastroDrone.setVisible(false);
+                janelaCadastroDrone.setVisible(true);
             }
         });
         botaoLimpar.addActionListener(new ActionListener() {
@@ -44,6 +44,7 @@ public class formJanelaCadastroDrone {
         botaoMostrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 JOptionPane.showMessageDialog(null,cd.mostraDrones());
             }
         });
