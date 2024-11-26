@@ -22,6 +22,15 @@ public class CadastroDrone {
         drones.add(d);
     }
 
+    public Drone getDroneDisponivel (int tipoTransporte) {
+        for (Drone d : drones) {
+            if (d.getTipo() == tipoTransporte) {
+                return d;
+            }
+        }
+        return null;
+    }
+
     public boolean verificaRepetido(int codigoDrone) {
         for (Drone drone : drones) {
             if (drone.getCodigo() == codigoDrone)

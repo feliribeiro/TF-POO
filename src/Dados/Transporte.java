@@ -1,6 +1,7 @@
 package Dados;
 
 public abstract class Transporte {
+        private int tipo;
         private int numero;
         private String nomeCliente;
         private String descricao;
@@ -12,9 +13,9 @@ public abstract class Transporte {
         private Estado situacao;
         private Drone drone;
 
-        public Transporte (int numero, String nomeCliente, String descricao, double peso,
+        public Transporte (int tipo,int numero, String nomeCliente, String descricao, double peso,
                            double latitudeOrigem, double latitudeDestino, double longitudeOrigem, double longitudeDestino, Estado situacao) {
-
+            this.tipo = tipo;
             this.numero = numero;
             this.nomeCliente = nomeCliente;
             this.descricao = descricao;
@@ -73,6 +74,15 @@ public abstract class Transporte {
         this.situacao = situacao;
     }
 
+    public int getTipo() {
+        return tipo;
+    }
 
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
 
+    public void setDrone(Drone drone) {
+        this.drone = drone;
+    }
 }

@@ -3,8 +3,8 @@ package Dados;
 public class DronePessoal extends Drone implements Comparable<DronePessoal> {
     private int qtdMaxPessoas;
 
-    public DronePessoal(int codigo, double custoFixo, double autonomia, int qtdMaxPessoas) {
-        super(codigo, custoFixo, autonomia);
+    public DronePessoal(int codigo, double custoFixo, double autonomia, int tipo, int qtdMaxPessoas) {
+        super(codigo, custoFixo, autonomia, tipo);
         this.qtdMaxPessoas = qtdMaxPessoas;
     }
     @Override
