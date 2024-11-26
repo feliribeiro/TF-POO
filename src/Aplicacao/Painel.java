@@ -83,7 +83,7 @@ public class Painel {
                             double custoFixo = Double.parseDouble(dados[2]);
                             double autonomia = Double.parseDouble(dados[3]);
                             int qtdMaxima = Integer.parseInt(dados[4]);
-                            ACMEAirDrone.cadastrarNovoDrone(new DronePessoal(codigo,custoFixo,autonomia,qtdMaxima));
+                            ACMEAirDrone.cadastrarNovoDrone(new DronePessoal(codigo,custoFixo,autonomia,1,qtdMaxima));
                         }
                         if (dados[0].equals("3")){
                             int codigo = Integer.parseInt(dados[1]);
@@ -91,7 +91,7 @@ public class Painel {
                             double autonomia = Double.parseDouble(dados[3]);
                             double pesoMaximo = Double.parseDouble(dados[4]);
                             boolean climatizado = Boolean.parseBoolean(dados[5]);
-                            ACMEAirDrone.cadastrarNovoDrone(new DroneCargaViva(codigo,custoFixo,autonomia,pesoMaximo,climatizado));
+                            ACMEAirDrone.cadastrarNovoDrone(new DroneCargaViva(codigo,custoFixo,autonomia,3,pesoMaximo,climatizado));
                         }
                         if (dados[0].equals("2")){
                             int codigo = Integer.parseInt(dados[1]);
@@ -99,7 +99,7 @@ public class Painel {
                             double autonomia = Double.parseDouble(dados[3]);
                             double pesoMaximo = Double.parseDouble(dados[4]);
                             boolean protecao = Boolean.parseBoolean(dados[5]);
-                            ACMEAirDrone.cadastrarNovoDrone(new DroneCargaInanimada(codigo,custoFixo,autonomia,pesoMaximo,protecao));
+                            ACMEAirDrone.cadastrarNovoDrone(new DroneCargaInanimada(codigo,custoFixo,autonomia,2,pesoMaximo,protecao));
                         }
                     }
                 } catch (FileNotFoundException e1) {

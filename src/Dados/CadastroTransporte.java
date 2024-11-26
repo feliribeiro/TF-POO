@@ -78,6 +78,10 @@ public class CadastroTransporte {
         return "Erro: Transporte não encontrado.";
     }
 
+    @Override
+    public String toString() {
+        return "CadastroTransporte{}";
+    }
 
     public Queue<Transporte> getTransportes() {
         return transportes;

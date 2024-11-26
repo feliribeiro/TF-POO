@@ -76,7 +76,7 @@ public class formJanelaCadastroDrone {
                             int pesoMaximo = Integer.parseInt(txtqtdMaxima.getText());
                             boolean protegidoOuClimatizado = protegidoOuClimatizadoCheckBox.isSelected();
                             if (CargaAnimada.isSelected()){
-                                cd.addDrone(new DroneCargaViva(codigo, custoFixo, autonomia, 3, qtdMaxima, protegidoOuClimatizado));
+                                cd.addDrone(new DroneCargaViva(codigo, custoFixo, autonomia, 3, pesoMaximo, protegidoOuClimatizado));
                                 JOptionPane.showMessageDialog(null,"Código do Drone: " + txtCodigo.getText() + "\n" +
                                         "Custo Fixo: " + txtCustoFixo.getText() + "\n" +
                                         "Autonomia: " + txtAutonomia.getText() + "\n" +

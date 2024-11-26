@@ -35,7 +35,7 @@ public class ACMEAirDrones extends JFrame {
         this.setVisible(true);
     }
 
-    public void cadastrarNovoDrone(Drone drone ) {
+    public void cadastrarNovoDrone(Drone drone) {
         cadastroDrone.addDrone(drone);
     }
 
@@ -56,44 +56,46 @@ public class ACMEAirDrones extends JFrame {
         String nomeArquivo = JOptionPane.showInputDialog(null, "Digite o nome do arquivo para salvar os dados:", "Nome do arquivo", JOptionPane.PLAIN_MESSAGE);
         if (nomeArquivo == null || nomeArquivo.trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nenhum nome foi digitado.", "Aviso", JOptionPane.WARNING_MESSAGE);
-            return;
         } else {
-           try {
-               File file = new File(nomeArquivo.concat(".txt"));
-               FileWriter fw = new FileWriter(file);
-               BufferedWriter bufferedWriter = new BufferedWriter(fw);
+            try {
+                File file = new File(nomeArquivo.concat(".txt"));
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bufferedWriter = new BufferedWriter(fw);
 
-               bufferedWriter.write(cadastroDrone.gerarRelatorioDrones());
+                bufferedWriter.write(cadastroDrone.gerarRelatorioDrones());
+                bufferedWriter.write(cadastroTransporte.gerarRelatorioTransportes());
+                bufferedWriter.close();
 
-           } catch (IOException e){
-               JOptionPane.showMessageDialog(null, nomeArquivo, e.getMessage(), JOptionPane.WARNING_MESSAGE);
-           }
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, nomeArquivo, e.getMessage(), JOptionPane.WARNING_MESSAGE);
+            }
+        }
         }
 
-   // public void carregarDados() {
-        String nomeArquivoCarregaDados = JOptionPane.showInputDialog(null, "Digite o nome do arquivo","Nome do arquivo", JOptionPane.PLAIN_MESSAGE);
-        if (nomeArquivoCarregaDados == null || nomeArquivoCarregaDados.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Nenhum nome foi digitado.", "Aviso", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        try{
-            Scanner in = new Scanner(new File(nomeArquivoCarregaDados));
-            while (in.hasNextLine()) {
-                String linha = in.nextLine();
-                String[] dados = linha.split(",");
-                if (dados[0] == null || dados[0].trim().isEmpty())
-                    throw new FileNotFoundException();
-                if (dados.length == 5)
-                    cadastroDrone.addDrone(new DronePessoal(Integer.parseInt(dados[1]),Double.parseDouble(dados[2]),Double.parseDouble(dados[3]),Integer.parseInt(dados[4])));
-                if (dados.length == 6){
-                    if (dados[0].equals("1.1"))
-                        cadastroDrone.addDrone(new DroneCargaViva(Integer.parseInt(dados[1]),Double.parseDouble(dados[2]),Double.parseDouble(dados[3]),Integer.parseInt(dados[4]),Boolean.parseBoolean(dados[5])));
-                    if (dados[0].equals("1.2"))
-                        cadastroDrone.addDrone(new DroneCargaInanimada(Integer.parseInt(dados[1]),Double.parseDouble(dados[2]),Double.parseDouble(dados[3]),Integer.parseInt(dados[4]),Boolean.parseBoolean(dados[5])));
+        public void carregarDados() {
+            String nomeArquivoCarregaDados = JOptionPane.showInputDialog(null, "Digite o nome do arquivo", "Nome do arquivo", JOptionPane.PLAIN_MESSAGE);
+            if (nomeArquivoCarregaDados == null || nomeArquivoCarregaDados.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Nenhum nome foi digitado.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            try {
+                Scanner in = new Scanner(new File(nomeArquivoCarregaDados));
+                while (in.hasNextLine()) {
+                    String linha = in.nextLine();
+                    String[] dados = linha.split(",");
+                    if (dados[0] == null || dados[0].trim().isEmpty())
+                        throw new FileNotFoundException();
+                    if (dados.length == 5)
+                        cadastroDrone.addDrone(new DronePessoal(Integer.parseInt(dados[1]), Double.parseDouble(dados[2]), Double.parseDouble(dados[3]),1, Integer.parseInt(dados[4])));
+                    if (dados.length == 6) {
+                        if (dados[0].equals("1.1"))
+                            cadastroDrone.addDrone(new DroneCargaViva(Integer.parseInt(dados[1]), Double.parseDouble(dados[2]), Double.parseDouble(dados[3]),3, Integer.parseInt(dados[4]), Boolean.parseBoolean(dados[5])));
+                        if (dados[0].equals("1.2"))
+                            cadastroDrone.addDrone(new DroneCargaInanimada(Integer.parseInt(dados[1]), Double.parseDouble(dados[2]), Double.parseDouble(dados[3]),2, Integer.parseInt(dados[4]), Boolean.parseBoolean(dados[5])));
                     }
                 }
-        } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Arquivo nao encontrado. " + e.getMessage());
+            } catch (FileNotFoundException e) {
+                JOptionPane.showMessageDialog(null, "Arquivo nao encontrado. " + e.getMessage());
+            }
         }
-    }
 }
