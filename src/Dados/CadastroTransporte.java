@@ -13,18 +13,18 @@ public class CadastroTransporte {
         this.transportes = new LinkedList<>();
     }
 
-    public void addTransporte(Transporte t) {
+    public boolean addTransporte(Transporte t) {
         if (verificaRepetido(t.getNumero())) {
             System.out.println("Erro: Transporte com número já existente.");
-            return;
+            return false;
         }
         Drone droneDisponivel = new CadastroDrone().getDroneDisponivel(t.getTipo());
         if (droneDisponivel != null) {
             t.setDrone(droneDisponivel);
             transportes.add(t);
             t.setSituacao(Estado.ALOCADO);
-            System.out.println("Transporte e drone vinculado cadastrado com sucesso.");
-        } else System.out.println("Erro: Drone não disponível para o transporte.");
+            return true;
+        } else return false;
     }
 
     public boolean verificaRepetido(int numeroTransporte) {
