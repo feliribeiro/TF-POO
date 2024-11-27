@@ -177,9 +177,11 @@ public class Painel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (ct.getTransportesPendentes().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Nenhum transporte pendente.");
+                    JOptionPane.showMessageDialog(null, "Nenhum transporte pendente.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                } else if (ct.processaTransportesPendentes()) {
+                    JOptionPane.showMessageDialog(null, "Transportes pendentes processados com sucesso.");
                 } else {
-                    JOptionPane.showMessageDialog(null, ct.getTransportesPendentes());
+                    JOptionPane.showMessageDialog(null, "Sem drones disponíveis para o processamento.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });

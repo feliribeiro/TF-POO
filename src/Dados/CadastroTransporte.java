@@ -6,27 +6,24 @@ import java.util.List;
 import java.util.Queue;
 
 public class CadastroTransporte {
-    private Queue<Transporte> transportes;
+    private ArrayList<Transporte> transportes;
+    private Queue<Transporte> pendentes;
     private CadastroDrone cadastroDrone;
 
     public CadastroTransporte() {
-        this.transportes = new LinkedList<>();
-        this.cadastroDrone = CadastroDrone.getInstancia();
+        this.transportes = new ArrayList<>();
+        this.pendentes = new LinkedList<>();
+        CadastroDrone cadastroDrone = new CadastroDrone();
     }
 
     public boolean addTransporte(Transporte t) {
         if (verificaRepetido(t.getNumero())) {
             return false;
         }
-        for (Drone d : cadastroDrone.getDrones()) {
-            if (d.getTipo() == t.getTipo()) {
-                t.setDrone(d);
-                transportes.add(t);
-                t.setSituacao(Estado.ALOCADO);
-                return true;
-            }
-        }
-            return false;
+        t.setSituacao(Estado.PENDENTE);
+        transportes.add(t);
+        pendentes.add(t);
+        return true;
     }
 
     public boolean verificaRepetido(int numeroTransporte) {
@@ -39,13 +36,20 @@ public class CadastroTransporte {
     }
 
     public Queue<Transporte> getTransportesPendentes() {
-        Queue<Transporte> pendentes = new LinkedList<>();
-        for (Transporte t : transportes) {
-            if (t.getSituacao() == Estado.PENDENTE) {
-                pendentes.add(t);
-            }
+            return pendentes;
+    }
+
+    public boolean processaTransportesPendentes() {
+        for (Transporte t : pendentes) {
+                Drone drone = cadastroDrone.getDroneDisponivel(t.getTipo());
+                if (drone != null) {
+                    t.setDrone(drone);
+                    t.setSituacao(Estado.ALOCADO);
+                    pendentes.remove(t);
+                    return true;
+                }
         }
-        return pendentes;
+        return false;
     }
 
     public String gerarRelatorioTransportes() {
@@ -59,8 +63,9 @@ public class CadastroTransporte {
         return relatorio.toString();
     }
 
-    public String alterarSituacao(int numeroTransporte, String situacao) {
 
+
+    public String alterarSituacao(int numeroTransporte, String situacao) {
         for (Transporte transporte : transportes) {
             if (transporte.getNumero() == numeroTransporte) {
                 if (transporte.getSituacao() == Estado.TERMINADO || transporte.getSituacao() == Estado.CANCELADO) {//
@@ -76,7 +81,8 @@ public class CadastroTransporte {
         }
         return "Erro: Transporte não encontrado.";
     }
-    public Queue<Transporte> getTransportes() {
+
+    public ArrayList<Transporte> getTransportes() {
         return transportes;
     }
 
