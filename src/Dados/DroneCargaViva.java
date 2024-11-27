@@ -11,7 +11,6 @@ public class DroneCargaViva extends DroneCarga {
     @Override
     public double calculaCustoKm() {
         double custoKm = getCustoFixo() / getAutonomia();
-
         if (climatizado) {
             return custoKm + 20.0;
         } else

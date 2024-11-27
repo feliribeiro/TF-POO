@@ -9,7 +9,6 @@ public abstract class DroneCarga extends Drone {
     }
     @Override
     public double calculaCustoKm() {
-
         return 0;
     }
 }

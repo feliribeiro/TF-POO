@@ -96,7 +96,7 @@
         <properties>
           <hideActionText value="false"/>
           <selected value="false"/>
-          <text value="CargaAnimada"/>
+          <text value="Carga Viva"/>
         </properties>
       </component>
       <component id="83b66" class="javax.swing.JCheckBox" binding="protegidoOuClimatizadoCheckBox" default-binding="true">

@@ -20,7 +20,7 @@ public class TransportePessoal extends Transporte {
 
     public String toString() {
         if (this.getDrone() != null)
-            return super.toSuperString() + "\nCusto do Transporte Pessoal: " + calculaCusto();
+            return super.toSuperString() + "\nCusto do Transporte Pessoal: " + String.format("%.2f", calculaCusto());
         else return super.toSuperString();
     }
 }
