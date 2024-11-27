@@ -18,21 +18,25 @@ public class CadastroTransporte {
     }
 
     public String gerarRelatorioTransportes() {
-        if (transportes.isEmpty()) {
-            return "Nenhum transporte cadastrado no sistema.";
-        }
-        StringBuilder relatorio = new StringBuilder("Relatório de Transportes:\n");
-        for (Transporte transporte : transportes) {
-            if (transporte instanceof TransportePessoal) relatorio.append("Transporte Pessoal:");
-            if (transporte instanceof TransporteCargaInanimada) relatorio.append("Transporte Carga Inanimada:");
-            if (transporte instanceof TransporteCargaViva) relatorio.append("Transporte Carga Viva:");
-            relatorio.append(transporte.toString())
-                    .append("\nCusto por Km: ")
-                    .append(String.format("%.2f", transporte.calculaCusto()))
-                    .append("\n\n");
-        }
-        return relatorio.toString();
+    if (transportes.isEmpty()) {
+        return "Nenhum transporte cadastrado no sistema.";
     }
+    StringBuilder relatorio = new StringBuilder("Relatório de Transportes:\n");
+    for (Transporte transporte : transportes) {
+        if (transporte instanceof TransportePessoal) {
+            relatorio.append("Transporte Pessoal:\n");
+        } else if (transporte instanceof TransporteCargaInanimada) {
+            relatorio.append("Transporte Carga Inanimada:\n");
+        } else if (transporte instanceof TransporteCargaViva) {
+            relatorio.append("Transporte Carga Viva:\n");
+        }
+        relatorio.append(transporte.toString())
+                .append("\nCusto por Km: ")
+                .append(String.format("%.2f", transporte.calculaCusto()))
+                .append("\n-------------------------\n");
+    }
+    return relatorio.toString();
+}
 
     public static CadastroTransporte getInstancia() {
         if (instancia == null) {

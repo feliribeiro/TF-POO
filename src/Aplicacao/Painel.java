@@ -192,10 +192,14 @@ public class Painel {
         mostrarTodosOsTransportesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (ct.gerarRelatorioTransportes() != null)
-                    JOptionPane.showMessageDialog(null, ct.gerarRelatorioTransportes());
-                 else
-                    JOptionPane.showMessageDialog(null, "Nenhum transporte cadastrado.");
+                CadastroTransporte ct = CadastroTransporte.getInstancia();
+                String relatorio = ct.gerarRelatorioTransportes();
+                JTextArea textArea = new JTextArea(relatorio);
+                JScrollPane scrollPane = new JScrollPane(textArea);
+                textArea.setLineWrap(true);
+                textArea.setWrapStyleWord(true);
+                scrollPane.setPreferredSize(new java.awt.Dimension(500, 500));
+                JOptionPane.showMessageDialog(null, scrollPane, "Relatório de Transportes", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
