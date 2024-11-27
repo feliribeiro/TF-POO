@@ -1,5 +1,6 @@
 package Aplicacao;
 
+import Dados.CadastroDrone;
 import Dados.CadastroTransporte;
 
 import javax.swing.*;
@@ -18,12 +19,13 @@ public class formJanelaAlteraSituacao {
     private JTextField textField2;
     private JButton botaoVoltar;
     private JButton botaoConfirmar;
-    private CadastroTransporte ct = new CadastroTransporte();
 
 
 
     public formJanelaAlteraSituacao(JanelaAlteraSituacao janelaAlteraSituacao) {
         this.janelaAlteraSituacao = janelaAlteraSituacao;
+        CadastroTransporte ct = CadastroTransporte.getInstancia();
+        CadastroDrone cd = CadastroDrone.getInstancia();
         caixaDoNumeroDoTransporte.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
