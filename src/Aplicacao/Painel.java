@@ -20,10 +20,11 @@ public class Painel {
     private JButton alterarASituaçãoDeButton;
     private JButton mostrarTodosOsTransportesButton;
     private JButton mostrarRelatórioGeralButton;
-    private Dados.CadastroTransporte ct = new Dados.CadastroTransporte();
 
     public Painel() {
         ACMEAirDrones ACMEAirDrone = new ACMEAirDrones();
+        CadastroTransporte ct = new Dados.CadastroTransporte();
+        CadastroDrone cd = CadastroDrone.getInstancia();
 
         finalizarSistemaButton.addActionListener(new ActionListener() {
             @Override
@@ -52,11 +53,27 @@ public class Painel {
         salvarDadosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    ACMEAirDrone.salvarDados();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
+                    String nomeArquivo = JOptionPane.showInputDialog(null, "Digite o nome do arquivo para salvar os dados:", "Nome do arquivo", JOptionPane.PLAIN_MESSAGE);
+                    if (nomeArquivo == null || nomeArquivo.trim().isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Nenhum nome foi digitado.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        try {
+                            File file = new File(nomeArquivo.concat(".txt"));
+                            FileWriter fw = new FileWriter(file);
+                            BufferedWriter bufferedWriter = new BufferedWriter(fw);
+
+                            bufferedWriter.write(cd.gerarRelatorioDrones());
+                            bufferedWriter.append(ct.gerarRelatorioTransportes());
+                            bufferedWriter.close();
+
+                            System.out.println("chegou");
+
+                            JOptionPane.showMessageDialog(null, "Arquivo Criado com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+
+                        } catch (IOException ei) {
+                            JOptionPane.showMessageDialog(null, nomeArquivo, ei.getMessage(), JOptionPane.WARNING_MESSAGE);
+                        }
+                    }
             }
         });
         carregarDadosButton.addActionListener(new ActionListener() {
@@ -117,7 +134,7 @@ public class Painel {
 
                                     int qtdPessoas = Integer.parseInt(palavra[10]);
 
-                                    ACMEAirDrone.cadastraTransporte(new TransportePessoal(
+                                    ct.addTransporte(new TransportePessoal(
                                             1, codigo, nome, descricao, peso,
                                             latitudeOrigem, latitudeDestino, longitudeOrigem, longitudeDestino,
                                             estado, qtdPessoas
@@ -173,7 +190,7 @@ public class Painel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (ct.getTransportesPendentes().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Nenhum transporte pendente.");
+                    JOptionPane.showMessageDialog(null, "Nenhum transporte cadastrado.");
                 } else {
                     JOptionPane.showMessageDialog(null, ct.gerarRelatorioTransportes());
                 }
@@ -189,27 +206,21 @@ public class Painel {
     }
 
     private static double validarCoordenada(String valor, String nomeCampo) {
-        valor = valor.trim();  // Remove espaços extras
+        valor = valor.trim();
 
-        // Verificar se a coordenada já está no formato correto (apenas um ponto decimal)
         if (valor.chars().filter(ch -> ch == '.').count() > 1) {
-            // Se houver múltiplos pontos, tentamos corrigir removendo pontos extras
-            valor = valor.replaceFirst("\\.(?=.*\\.)", ""); // Remove o primeiro ponto extra
+            valor = valor.replaceFirst("\\.(?=.*\\.)", "");
         }
-
-        // Validar se ainda há mais de um ponto após a correção
         if (valor.chars().filter(ch -> ch == '.').count() > 1) {
             throw new IllegalArgumentException(nomeCampo + " possui múltiplos pontos: " + valor);
         }
 
-        // Tentar converter o valor para double
         try {
             return Double.parseDouble(valor);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(nomeCampo + " inválido: " + valor);
         }
     }
-
     public JPanel getPainel() {
         return Painel;
     }

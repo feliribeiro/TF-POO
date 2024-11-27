@@ -51,27 +51,6 @@ public class ACMEAirDrones extends JFrame {
         JOptionPane.showMessageDialog(null, cadastroDrone.gerarRelatorioDrones() + "\n" +
                 cadastroTransporte.gerarRelatorioTransportes());
     }
-
-    public void salvarDados() throws IOException {
-        String nomeArquivo = JOptionPane.showInputDialog(null, "Digite o nome do arquivo para salvar os dados:", "Nome do arquivo", JOptionPane.PLAIN_MESSAGE);
-        if (nomeArquivo == null || nomeArquivo.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Nenhum nome foi digitado.", "Aviso", JOptionPane.WARNING_MESSAGE);
-        } else {
-            try {
-                File file = new File(nomeArquivo.concat(".txt"));
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bufferedWriter = new BufferedWriter(fw);
-
-                bufferedWriter.write(cadastroDrone.gerarRelatorioDrones());
-                bufferedWriter.write(cadastroTransporte.gerarRelatorioTransportes());
-                bufferedWriter.close();
-
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, nomeArquivo, e.getMessage(), JOptionPane.WARNING_MESSAGE);
-            }
-        }
-        }
-
         public void carregarDados() {
             String nomeArquivoCarregaDados = JOptionPane.showInputDialog(null, "Digite o nome do arquivo", "Nome do arquivo", JOptionPane.PLAIN_MESSAGE);
             if (nomeArquivoCarregaDados == null || nomeArquivoCarregaDados.trim().isEmpty()) {
