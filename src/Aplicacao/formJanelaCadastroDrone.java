@@ -55,7 +55,7 @@ public class formJanelaCadastroDrone {
                     limpaField();
                 } else {
                     try {
-                        if (opcoesDrone.getSelectedItem().toString().equals("Drone Pessoal")){
+                        if (opcoesDrone.getSelectedItem().equals("Drone Pessoal")){
                             //CargaAnimada.setVisible(false);
                             //protegidoOuClimatizadoCheckBox.setVisible(false);
                             int codigo = Integer.parseInt(txtCodigo.getText());
