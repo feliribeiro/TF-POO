@@ -60,10 +60,15 @@ public abstract class Transporte {
     }
 
     public String toSuperString() {
-        return drone.toString() + "\n" + "Número: " + numero + "\nNome do Cliente: " + nomeCliente + "\nDescrição: " + descricao + "\nPeso: " + peso
-                + "\nLatitude Origem: " + latitudeOrigem + "\nLatitude Destino: " + latitudeDestino + "\nLongitude Origem: " + longitudeOrigem + "\nLongitude Destino: " +
-                longitudeDestino + "\nSituação: " + situacao;
-
+        StringBuilder sb = new StringBuilder();
+        if (this.drone != null)
+            sb.append(this.drone.toString());
+         else {
+            sb.append("\n" + "Número: " + numero + "\nNome do Cliente: " + nomeCliente + "\nDescrição: " + descricao + "\nPeso: " + peso
+                    + "\nLatitude Origem: " + latitudeOrigem + "\nLatitude Destino: " + latitudeDestino + "\nLongitude Origem: " + longitudeOrigem + "\nLongitude Destino: " +
+                    longitudeDestino + "\nSituação: " + situacao);
+        }
+         return sb.toString();
     }
 
     public Estado getSituacao() {
