@@ -41,8 +41,10 @@ public class formJanelaAlteraSituacao {
             public void actionPerformed(ActionEvent e) {
                 try {
                     int numTransporte = Integer.parseInt(caixaDoNumeroDoTransporte.getText());
+                    JOptionPane.showMessageDialog(null, ct.getTransportePeloNumero(numTransporte));
 
                     if (botaoSelecionar.getSelectedItem().equals("ALOCADO")) {
+
                         JOptionPane.showMessageDialog(null, ct.alterarSituacao(numTransporte, "ALOCADO"));
 
                     } else if (botaoSelecionar.getSelectedItem().equals("PENDENTE")) {
