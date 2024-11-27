@@ -1,0 +1,4 @@
+tipo;codigo;custofixo;autonomia;qtdmaxpessoas_pesomaximo;protecao_climatizado
+2;22;20.0;200.0;200.0;true
+1;11;10.0;100.0;5
+3;33;30.0;400.0;300.0;true

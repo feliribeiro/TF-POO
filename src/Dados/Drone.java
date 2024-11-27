@@ -10,7 +10,7 @@ public abstract class Drone {
         this.codigo = codigo;
         this.custoFixo = custoFixo;
         this.autonomia = autonomia;
-        this.tipo = this.tipo;
+        this.tipo = tipo;
     }
 
 

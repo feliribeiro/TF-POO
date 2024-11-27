@@ -16,9 +16,6 @@ public class formJanelaAlteraSituacao {
     private JButton voltarButton;
     private JComboBox botaoSelecionar;
     private JTextField dadosDoTransporte;
-    private JTextField textField2;
-    private JButton botaoVoltar;
-    private JButton botaoConfirmar;
 
 
 
@@ -75,5 +72,4 @@ public class formJanelaAlteraSituacao {
     public JPanel getPainel() {
         return panel1;
     }
-
 }

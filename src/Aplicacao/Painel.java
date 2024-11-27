@@ -26,8 +26,6 @@ public class Painel {
         CadastroTransporte ct = CadastroTransporte.getInstancia();
         CadastroDrone cd = CadastroDrone.getInstancia();
 
-        UIManager.put("OptionPane.minimumSize",new Dimension(500, 400));
-
         finalizarSistemaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -49,7 +47,9 @@ public class Painel {
         mostrarRelatórioGeralButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,cd.gerarRelatorioDrones() + "\n" + ct.gerarRelatorioTransportes());
+                JanelaRelatorio JR = new JanelaRelatorio();
+
+                //JOptionPane.showMessageDialog(null,cd.gerarRelatorioDrones() + "\n" + ct.gerarRelatorioTransportes());
             }
         });
         salvarDadosButton.addActionListener(new ActionListener() {
@@ -225,10 +225,10 @@ public class Painel {
 
                 try {
                     // Processa drones
-                    carregarDrones(arquivoDrones, ACMEAirDrone);
+                    carregarDrones(arquivoDrones);
 
                     // Processa transportes
-                    carregarTransportes(arquivoTransportes, ct);
+                    carregarTransportes(arquivoTransportes);
 
                     // Exibe os dados carregados
                     JOptionPane.showMessageDialog(null, "Dados carregados com sucesso:\n\n" +
@@ -238,21 +238,22 @@ public class Painel {
                 }
             }
 
-            private void carregarDrones(String arquivo, ACMEAirDrones sistema) {
+            private void carregarDrones(String arquivo) {
+                CadastroDrone sistema = CadastroDrone.getInstancia();
                 try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
                     String linha;
                     while ((linha = br.readLine()) != null) {
                         String[] dados = linha.split(";");
                         switch (dados[0]) {
-                            case "1" -> sistema.cadastrarNovoDrone(new DronePessoal(
+                            case "1" -> sistema.addDrone(new DronePessoal(
                                     Integer.parseInt(dados[1]), Double.parseDouble(dados[2]), Double.parseDouble(dados[3]),
                                     1, Integer.parseInt(dados[4])));
-                            case "2" -> sistema.cadastrarNovoDrone(new DroneCargaInanimada(
+                            case "2" -> sistema.addDrone(new DroneCargaInanimada(
                                     Integer.parseInt(dados[1]), Double.parseDouble(dados[2]), Double.parseDouble(dados[3]),
                                     2, Double.parseDouble(dados[4]), Boolean.parseBoolean(dados[5])));
-                            case "3" -> sistema.cadastrarNovoDrone(new DroneCargaViva(
+                            case "3" -> sistema.addDrone(new DroneCargaViva(
                                     Integer.parseInt(dados[1]), Double.parseDouble(dados[2]), Double.parseDouble(dados[3]),
-                                    2, Double.parseDouble(dados[4]), Boolean.parseBoolean(dados[5])));
+                                    3, Double.parseDouble(dados[4]), Boolean.parseBoolean(dados[5])));
                             //default -> JOptionPane.showMessageDialog(null, "Tipo de drone desconhecido: " + dados[0], "Aviso", JOptionPane.WARNING_MESSAGE);
                         }
                     }
@@ -261,7 +262,8 @@ public class Painel {
                 }
             }
 
-            private void carregarTransportes(String arquivo, CadastroTransporte sistema) {
+            private void carregarTransportes(String arquivo) {
+                CadastroTransporte sistema = CadastroTransporte.getInstancia();
                 try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
                     String linha;
                     while ((linha = br.readLine()) != null) {

@@ -26,8 +26,6 @@ public class CadastroDrone {
             return;
         }
         drones.add(d);
-        System.out.println("adicionou");
-        System.out.println(d.getTipo());
     }
 
     public Drone getDroneDisponivel (int tipoTransporte) {

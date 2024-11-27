@@ -25,7 +25,7 @@ public class TransporteCargaViva extends Transporte {
 
     public String toString() {
         if (this.getDrone() != null)
-            return super.toSuperString() + "\nCusto do Transporte De Carga Inanimada: " + calculaCusto();
+            return super.toSuperString() + "\nCusto do Transporte De Carga Viva: " + calculaCusto();
         else return super.toSuperString();
     }
 }
