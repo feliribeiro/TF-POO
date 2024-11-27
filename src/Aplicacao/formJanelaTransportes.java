@@ -72,7 +72,7 @@ public class formJanelaTransportes {
                                 int qtdMaxima = Integer.parseInt(quantidadePessoas);
                                 if(ct.addTransporte(new TransportePessoal(1, numero, nomeClientes, descricao, peso, latitudeOrigem, latitudeDestino, longitudeOrigem, longitudeDestino, Estado.PENDENTE, qtdMaxima))){
                                     JOptionPane.showMessageDialog(null, "Transporte Pessoal cadastrado com sucesso!");
-                                } else JOptionPane.showMessageDialog(null, "Erro ao adicionar transporte.", "Erro", JOptionPane.ERROR_MESSAGE);
+                                }
                             } else {
                                 JOptionPane.showMessageDialog(null, "Quantidade de pessoas não informada.");
                             }
@@ -83,7 +83,6 @@ public class formJanelaTransportes {
                             if (cargaPerigosaPal != null && !cargaPerigosaPal.isEmpty()) {
                                 if(!cargaPerigosaPal.equalsIgnoreCase("sim") && !cargaPerigosaPal.equalsIgnoreCase("nao")){
                                     JOptionPane.showMessageDialog(null, "Digite sim ou nao.");
-                                    return;
                                 } else if (cargaPerigosaPal.equalsIgnoreCase("sim")) {
                                     cargaPerigosa = true;
                                 } else {
