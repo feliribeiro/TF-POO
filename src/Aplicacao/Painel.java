@@ -47,7 +47,7 @@ public class Painel {
         mostrarRelatórioGeralButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ACMEAirDrone.mostraRelatorioGeral();
+                JOptionPane.showMessageDialog(null,cd.gerarRelatorioDrones() + "\n" + ct.gerarRelatorioTransportes());
             }
         });
         salvarDadosButton.addActionListener(new ActionListener() {

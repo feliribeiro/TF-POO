@@ -20,8 +20,8 @@ public class ACMEAirDrones extends JFrame {
 
     public ACMEAirDrones() {
         super();
-        cadastroDrone = new CadastroDrone();
-        cadastroTransporte = new CadastroTransporte();
+        cadastroDrone = CadastroDrone.getInstancia();
+        cadastroTransporte = CadastroTransporte.getInstancia();
 
     }
 
@@ -47,11 +47,7 @@ public class ACMEAirDrones extends JFrame {
         cadastroTransporte.getTransportesPendentes();
     }
 
-    public void mostraRelatorioGeral() {
-        JOptionPane.showMessageDialog(null, cadastroDrone.gerarRelatorioDrones() + "\n" +
-                cadastroTransporte.gerarRelatorioTransportes());
-    }
-        public void carregarDados() {
+    public void carregarDados() {
             String nomeArquivoCarregaDados = JOptionPane.showInputDialog(null, "Digite o nome do arquivo", "Nome do arquivo", JOptionPane.PLAIN_MESSAGE);
             if (nomeArquivoCarregaDados == null || nomeArquivoCarregaDados.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Nenhum nome foi digitado.", "Aviso", JOptionPane.WARNING_MESSAGE);

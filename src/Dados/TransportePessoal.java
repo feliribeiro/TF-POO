@@ -10,14 +10,17 @@ public class TransportePessoal extends Transporte {
     }
     @Override
     public double calculaCusto() {
-        double custoBase = calculaDistancia() * getDrone().calculaCustoKm();
-        double custoAdicional = qtdPessoas * 10;
+        if (this.getDrone() != null) {
+            double custoBase = calculaDistancia() * getDrone().calculaCustoKm();
+            double custoAdicional = qtdPessoas * 10;
 
-        return custoBase + custoAdicional;
+            return custoBase + custoAdicional;
+        } else return 0;
     }
 
     public String toString() {
-        return super.toSuperString() + "\nCusto do Transporte Pessoal: " + calculaCusto();
+        if (this.getDrone() != null)
+            return super.toSuperString() + "\nCusto do Transporte De Carga Inanimada: " + calculaCusto();
+        else return super.toSuperString();
     }
-
 }

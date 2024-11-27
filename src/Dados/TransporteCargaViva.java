@@ -12,16 +12,20 @@ public class TransporteCargaViva extends Transporte {
 
     @Override
     public double calculaCusto() {
-        double custoAdicional = 0;
-        double custoBase = calculaDistancia() * getDrone().calculaCustoKm();
+        if (this.getDrone() != null) {
+            double custoAdicional = 0;
+            double custoBase = calculaDistancia() * getDrone().calculaCustoKm();
 
-        if (temperaturaMaxima - temperaturaMinima > 10) {
-            custoAdicional += 1000;
-        }
-        return custoAdicional + custoBase;
+            if (temperaturaMaxima - temperaturaMinima > 10) {
+                custoAdicional += 1000;
+            }
+            return custoAdicional + custoBase;
+        } else return 0;
     }
 
     public String toString() {
-        return super.toSuperString() + "\nCusto do Transporte De Carga Viva: " + calculaCusto();
+        if (this.getDrone() != null)
+            return super.toSuperString() + "\nCusto do Transporte De Carga Inanimada: " + calculaCusto();
+        else return super.toSuperString();
     }
 }
