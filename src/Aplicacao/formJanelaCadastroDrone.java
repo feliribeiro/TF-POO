@@ -62,7 +62,9 @@ public class formJanelaCadastroDrone {
                             double custoFixo = Double.parseDouble(txtCustoFixo.getText());
                             double autonomia = Double.parseDouble(txtAutonomia.getText());
                             int qtdMaxima = Integer.parseInt(txtqtdMaxima.getText());
-                            cd.addDrone(new DronePessoal(codigo, custoFixo, autonomia, 1, qtdMaxima));
+                            DronePessoal d = new DronePessoal(codigo, custoFixo, autonomia, 1, qtdMaxima);
+                            d.setTipo(1);
+                            cd.addDrone(d);
                             JOptionPane.showMessageDialog(null,"Código do Drone Pessoal: " + txtCodigo.getText() + "\n" +
                                     "Custo Fixo: " + txtCustoFixo.getText() + "\n" +
                                     "Autonomia: " + txtAutonomia.getText() + "\n" +
@@ -74,14 +76,17 @@ public class formJanelaCadastroDrone {
                             int pesoMaximo = Integer.parseInt(txtqtdMaxima.getText());
                             boolean protegidoOuClimatizado = protegidoOuClimatizadoCheckBox.isSelected();
                             if (CargaAnimada.isSelected()){
-                                cd.addDrone(new DroneCargaViva(codigo, custoFixo, autonomia, 3, pesoMaximo, protegidoOuClimatizado));
+                                DroneCargaViva dV = new DroneCargaViva(codigo, custoFixo, autonomia, 3, pesoMaximo, protegidoOuClimatizado);
+                                dV.setTipo(3);
+                                cd.addDrone(dV);
                                 JOptionPane.showMessageDialog(null,"Código do Drone de Carga Viva: " + txtCodigo.getText() + "\n" +
                                         "Custo Fixo: " + txtCustoFixo.getText() + "\n" +
                                         "Autonomia: " + txtAutonomia.getText() + "\n" +
                                         "Peso Maximo: " + txtqtdMaxima.getText() + "\n" +
                                         "Climatizaçao: " + protegidoOuClimatizado+ "\n");
                             } else {
-                                cd.addDrone(new DroneCargaInanimada(codigo, custoFixo, autonomia, 2, pesoMaximo, protegidoOuClimatizado));
+                                DroneCargaInanimada dA = new DroneCargaInanimada(codigo, custoFixo, autonomia, 2, pesoMaximo, protegidoOuClimatizado);
+                                cd.addDrone(dA);
                                 JOptionPane.showMessageDialog(null,"Código do Drone de Carga Inanimada: " + txtCodigo.getText() + "\n" +
                                         "Custo Fixo: " + txtCustoFixo.getText() + "\n" +
                                         "Autonomia: " + txtAutonomia.getText() + "\n" +

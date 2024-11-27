@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class CadastroDrone {
-
     private ArrayList<Drone> drones;
     private Comparador c;
     private static CadastroDrone instancia;
@@ -31,6 +30,7 @@ public class CadastroDrone {
         }
         drones.add(d);
         System.out.println("adicionou");
+        System.out.println(d.getTipo());
     }
 
     public Drone getDroneDisponivel (int tipoTransporte) {

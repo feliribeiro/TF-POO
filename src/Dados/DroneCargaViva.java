@@ -4,7 +4,7 @@ public class DroneCargaViva extends DroneCarga {
     private boolean climatizado;
 
     public DroneCargaViva(int codigo, double custoFixo, double autonomia, int tipo, double pesoMaximo, boolean climatizado) {
-        super(codigo, custoFixo, autonomia, tipo, pesoMaximo);
+        super(codigo, custoFixo, autonomia, 3, pesoMaximo);
         this.climatizado = climatizado;
     }
 
