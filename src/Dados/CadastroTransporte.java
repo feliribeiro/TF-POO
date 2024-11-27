@@ -14,7 +14,7 @@ public class CadastroTransporte {
     public CadastroTransporte() {
         this.transportes = new ArrayList<>();
         this.pendentes = new LinkedList<>();
-        CadastroDrone cadastroDrone = new CadastroDrone();
+        this.cadastroDrone = CadastroDrone.getInstancia();
     }
 
     public String gerarRelatorioTransportes() {
@@ -69,14 +69,17 @@ public class CadastroTransporte {
     }
 
     public boolean processaTransportesPendentes() {
-        for (Transporte t : pendentes) {
-                Drone drone = cadastroDrone.getDroneDisponivel(t.getTipo());
+        if (!pendentes.isEmpty()) {
+            for (Transporte t : pendentes) {
+                Drone drone = this.cadastroDrone.getDroneDisponivel(t.getTipo());
                 if (drone != null) {
                     t.setDrone(drone);
                     t.setSituacao(Estado.ALOCADO);
                     pendentes.remove(t);
                     return true;
                 }
+            }
+            return false;
         }
         return false;
     }

@@ -3,10 +3,10 @@ package Aplicacao;
 import Dados.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.util.Scanner;
 
 public class Painel {
     private JPanel Painel;
@@ -25,6 +25,8 @@ public class Painel {
         ACMEAirDrones ACMEAirDrone = new ACMEAirDrones();
         CadastroTransporte ct = CadastroTransporte.getInstancia();
         CadastroDrone cd = CadastroDrone.getInstancia();
+
+        UIManager.put("OptionPane.minimumSize",new Dimension(500, 400));
 
         finalizarSistemaButton.addActionListener(new ActionListener() {
             @Override

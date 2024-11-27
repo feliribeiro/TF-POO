@@ -1,16 +1,12 @@
 
 package Dados;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class CadastroDrone {
 
-    private ArrayList<Drone> drones;
-    private Comparador c;
+    private final ArrayList<Drone> drones;
+    private final Comparador c;
     private static CadastroDrone instancia;
 
     public CadastroDrone() {
@@ -44,17 +40,16 @@ public class CadastroDrone {
     }
 
     public String mostraDrones() {
-        ArrayList<Drone> droneOrdenados = drones;
         drones.sort(c);
         StringBuilder sb = new StringBuilder();
-        for (Drone drone : droneOrdenados) {
+        for (Drone drone : drones) {
             sb.append(drone.toString()).append("\n");
         }
         return sb.toString();
     }
 
     public boolean eRepetido(int codigo){
-        if (drones == null || drones.isEmpty()) {
+        if (drones.isEmpty()) {
             return false;
         }
         for (Drone drone : drones) {
@@ -83,32 +78,4 @@ public class CadastroDrone {
         }
         return relatorio.toString();
     }
-    public void escreverDronesEmArquivo(String nomeArquivo) {
-        File arquivo = new File(nomeArquivo);
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivo))) {
-
-            if (drones.isEmpty()) {
-                writer.write("Nenhum drone cadastrado.");
-                return;
-            }
-
-            for (Drone drone : drones) {
-                writer.write(drone.toString());
-                writer.newLine();
-            }
-
-            System.out.println("Dados dos drones foram salvos no arquivo " + nomeArquivo);
-
-        } catch (IOException e) {
-            System.out.println("Erro ao salvar os dados no arquivo: " + e.getMessage());
-        }
-    }
-
-    //METODO PARA GERAR O JSON SALVADADOS
-
-    public ArrayList<Drone> getDrones() {
-        return drones;
-    }
-
 }
