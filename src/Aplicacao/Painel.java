@@ -48,8 +48,6 @@ public class Painel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JanelaRelatorio JR = new JanelaRelatorio();
-
-                //JOptionPane.showMessageDialog(null,cd.gerarRelatorioDrones() + "\n" + ct.gerarRelatorioTransportes());
             }
         });
         salvarDadosButton.addActionListener(new ActionListener() {
@@ -67,8 +65,6 @@ public class Painel {
                             bufferedWriter.write(cd.gerarRelatorioDrones());
                             bufferedWriter.append(ct.gerarRelatorioTransportes());
                             bufferedWriter.close();
-
-                            System.out.println("chegou");
 
                             JOptionPane.showMessageDialog(null, "Arquivo Criado com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
 
@@ -231,8 +227,14 @@ public class Painel {
                     carregarTransportes(arquivoTransportes);
 
                     // Exibe os dados carregados
-                    JOptionPane.showMessageDialog(null, "Dados carregados com sucesso:\n\n" +
-                            cd.gerarRelatorioDrones() + "\n" + ct.gerarRelatorioTransportes());
+                   CadastroTransporte ct = CadastroTransporte.getInstancia();
+                   String relatorio = "Dados carregados com sucesso:\n\n" + cd.gerarRelatorioDrones() + "\n" + ct.gerarRelatorioTransportes();
+                   JTextArea textArea = new JTextArea(relatorio);
+                   JScrollPane scrollPane = new JScrollPane(textArea);
+                   textArea.setLineWrap(true);
+                   textArea.setWrapStyleWord(true);
+                   scrollPane.setPreferredSize(new java.awt.Dimension(500, 500));
+                   JOptionPane.showMessageDialog(null, scrollPane, "Relatório de Transportes", JOptionPane.INFORMATION_MESSAGE);
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro durante a leitura dos dados: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                 }

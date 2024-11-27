@@ -59,9 +59,9 @@ public class CadastroDrone {
 
     public String gerarRelatorioDrones() {
         if (drones.isEmpty()) {
-            return "Nenhum drone cadastrado no sistema.";
+            return "Nenhum drone cadastrado no sistema.\n";
         }
-        StringBuilder relatorio = new StringBuilder("Relatório de Drones:\n");
+        StringBuilder relatorio = new StringBuilder("*Relatório de Drones*\n\n");
         for (Drone drone : drones) {
             if (drone instanceof DronePessoal)
                 relatorio.append("Drone Pessoal:");

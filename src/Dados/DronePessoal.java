@@ -19,6 +19,6 @@ public class DronePessoal extends Drone implements Comparable<DronePessoal> {
 
     @Override
     public double calculaCustoKm() {
-        return 0;
+        return this.qtdMaxPessoas*2;
     }
 }
