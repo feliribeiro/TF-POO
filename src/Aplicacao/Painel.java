@@ -24,7 +24,7 @@ public class Painel {
     public Painel() {
         ACMEAirDrones ACMEAirDrone = new ACMEAirDrones();
         CadastroTransporte ct = new Dados.CadastroTransporte();
-        CadastroDrone cd = new CadastroDrone();
+        CadastroDrone cd = CadastroDrone.getInstancia();
 
         finalizarSistemaButton.addActionListener(new ActionListener() {
             @Override
@@ -65,6 +65,8 @@ public class Painel {
                             bufferedWriter.write(cd.gerarRelatorioDrones());
                             bufferedWriter.append(ct.gerarRelatorioTransportes());
                             bufferedWriter.close();
+
+                            System.out.println("chegou");
 
                             JOptionPane.showMessageDialog(null, "Arquivo Criado com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
 

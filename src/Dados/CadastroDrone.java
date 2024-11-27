@@ -11,20 +11,26 @@ public class CadastroDrone {
 
     private ArrayList<Drone> drones;
     private Comparador c;
+    private static CadastroDrone instancia;
 
     public CadastroDrone() {
         drones = new ArrayList<>();
         c = new Comparador();
     }
 
+    public static CadastroDrone getInstancia() {
+        if (instancia == null) {
+            instancia = new CadastroDrone();
+        }
+        return instancia;
+    }
+
     public void addDrone(Drone d) {
         if (eRepetido(d.getCodigo())) {
             return;
         }
-        if (drones == null) {
-            drones = new ArrayList<>();
-        }
         drones.add(d);
+        System.out.println("adicionou");
     }
 
     public Drone getDroneDisponivel (int tipoTransporte) {
@@ -63,7 +69,13 @@ public class CadastroDrone {
         }
         StringBuilder relatorio = new StringBuilder("Relatório de Drones:\n");
         for (Drone drone : drones) {
-            relatorio.append(drone.toString())
+            if (drone instanceof DronePessoal)
+                relatorio.append("Drone Pessoal:");
+            if (drone instanceof DroneCargaViva)
+                relatorio.append("Drone Carga Viva:");
+            if (drone instanceof DroneCargaInanimada)
+                relatorio.append("Drone Carga Inanimada:");
+                relatorio.append(drone.toString())
                     .append("\nCusto por Km: ")
                     .append(String.format("%.2f", drone.calculaCustoKm()))
                     .append("\n\n");

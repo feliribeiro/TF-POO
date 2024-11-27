@@ -26,9 +26,9 @@ public class formJanelaCadastroDrone {
     private JanelaCadastroDrone janelaCadastroDrone;
 
     public formJanelaCadastroDrone(JanelaCadastroDrone janelaCadastroDrone) {
-        CadastroDrone cd = new CadastroDrone();
-
+        CadastroDrone cd = CadastroDrone.getInstancia();
         this.janelaCadastroDrone = janelaCadastroDrone;
+
         botaoVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
