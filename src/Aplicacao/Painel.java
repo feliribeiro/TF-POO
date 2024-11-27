@@ -205,6 +205,88 @@ public class Painel {
                 JanelaAlteraSituacao JAS = new JanelaAlteraSituacao();
             }
         });
+        realizarLeituraDeDadosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nomeArquivoBase = JOptionPane.showInputDialog(null, "Digite o nome do arquivo base (sem extensão):", "Leitura de Dados", JOptionPane.PLAIN_MESSAGE);
+                if (nomeArquivoBase == null || nomeArquivoBase.trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Nome do arquivo não pode ser vazio.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                String arquivoDrones = nomeArquivoBase + "-DRONES.CSV";
+                String arquivoTransportes = nomeArquivoBase + "-TRANSPORTES.CSV";
+
+                try {
+                    // Processa drones
+                    carregarDrones(arquivoDrones, ACMEAirDrone);
+
+                    // Processa transportes
+                    carregarTransportes(arquivoTransportes, ct);
+
+                    // Exibe os dados carregados
+                    JOptionPane.showMessageDialog(null, "Dados carregados com sucesso:\n\n" +
+                            cd.gerarRelatorioDrones() + "\n" + ct.gerarRelatorioTransportes());
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro durante a leitura dos dados: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+            private void carregarDrones(String arquivo, ACMEAirDrones sistema) {
+                try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
+                    String linha;
+                    while ((linha = br.readLine()) != null) {
+                        String[] dados = linha.split(";");
+                        switch (dados[0]) {
+                            case "1" -> sistema.cadastrarNovoDrone(new DronePessoal(
+                                    Integer.parseInt(dados[1]), Double.parseDouble(dados[2]), Double.parseDouble(dados[3]),
+                                    1, Integer.parseInt(dados[4])));
+                            case "2" -> sistema.cadastrarNovoDrone(new DroneCargaInanimada(
+                                    Integer.parseInt(dados[1]), Double.parseDouble(dados[2]), Double.parseDouble(dados[3]),
+                                    2, Double.parseDouble(dados[4]), Boolean.parseBoolean(dados[5])));
+                            case "3" -> sistema.cadastrarNovoDrone(new DroneCargaViva(
+                                    Integer.parseInt(dados[1]), Double.parseDouble(dados[2]), Double.parseDouble(dados[3]),
+                                    2, Double.parseDouble(dados[4]), Boolean.parseBoolean(dados[5])));
+                            //default -> JOptionPane.showMessageDialog(null, "Tipo de drone desconhecido: " + dados[0], "Aviso", JOptionPane.WARNING_MESSAGE);
+                        }
+                    }
+                } catch (IOException | NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao carregar drones do arquivo: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+            private void carregarTransportes(String arquivo, CadastroTransporte sistema) {
+                try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
+                    String linha;
+                    while ((linha = br.readLine()) != null) {
+                        try {
+                            String[] dados = linha.split(";");
+                            switch (dados[0]) {
+                                case "1" -> sistema.addTransporte(new TransportePessoal(
+                                        1, Integer.parseInt(dados[1]), dados[2], dados[3], Double.parseDouble(dados[4]),
+                                        validarCoordenada(dados[5], "Latitude de origem"), validarCoordenada(dados[6], "Latitude de destino"),
+                                        validarCoordenada(dados[7], "Longitude de origem"), validarCoordenada(dados[8], "Longitude de destino"),
+                                        Estado.PENDENTE, Integer.parseInt(dados[9])));
+                                case "2" -> sistema.addTransporte(new TransporteCargaInanimada(
+                                        2, Integer.parseInt(dados[1]), dados[2], dados[3], Double.parseDouble(dados[4]),
+                                        validarCoordenada(dados[5], "Latitude de origem"), validarCoordenada(dados[6], "Latitude de destino"),
+                                        validarCoordenada(dados[7], "Longitude de origem"), validarCoordenada(dados[8], "Longitude de destino"),
+                                        Estado.PENDENTE, Boolean.parseBoolean(dados[9])));
+                                case "3" -> sistema.addTransporte(new TransporteCargaViva(
+                                        2, Integer.parseInt(dados[1]), dados[2], dados[3], Double.parseDouble(dados[4]),
+                                        validarCoordenada(dados[5], "Latitude de origem"), validarCoordenada(dados[6], "Latitude de destino"),
+                                        validarCoordenada(dados[7], "Longitude de origem"), validarCoordenada(dados[8], "Longitude de destino"),
+                                        Estado.PENDENTE, Double.parseDouble(dados[9]),Double.parseDouble(dados[10])));
+                                }
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(null, "Erro ao processar transporte: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao carregar transportes do arquivo: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
     }
 
     private static double validarCoordenada(String valor, String nomeCampo) {
