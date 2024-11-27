@@ -88,7 +88,7 @@ public class formJanelaTransportes {
                                     cargaPerigosa = false;
                                 }
                                 if(ct.addTransporte(new TransporteCargaInanimada(2, numero, nomeClientes, descricao, peso, latitudeOrigem, latitudeDestino, longitudeOrigem, longitudeDestino, Estado.PENDENTE, cargaPerigosa))){
-                                    JOptionPane.showMessageDialog(null, "Transporte de Carga Inanimada cadastrado com sucesso!");
+                                    JOptionPane.showMessageDialog(null, "Transporte de Carga Inanimada cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                                 } else JOptionPane.showMessageDialog(null, "Erro ao adicionar transporte.", "Erro", JOptionPane.ERROR_MESSAGE);
 
                             } else {

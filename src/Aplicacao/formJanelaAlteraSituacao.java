@@ -40,21 +40,20 @@ public class formJanelaAlteraSituacao {
         confirmarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                caixaDoNumeroDoTransporte.getText();
-                botaoSelecionar.getSelectedItem();
+                try {
+                    int numTransporte = Integer.parseInt(caixaDoNumeroDoTransporte.getText());
 
+                    if (botaoSelecionar.getSelectedItem().equals("ALOCADO")) {
+                        JOptionPane.showMessageDialog(null, ct.alterarSituacao(numTransporte, "ALOCADO"));
 
-                dadosDoTransporte.setText(ct.getTransportePeloNumero(Integer.parseInt(caixaDoNumeroDoTransporte.getText())));
+                    } else if (botaoSelecionar.getSelectedItem().equals("PENDENTE")) {
+                        JOptionPane.showMessageDialog(null, ct.alterarSituacao(numTransporte, "PENDENTE"));
 
-                if (botaoSelecionar.getSelectedItem().toString().equals("ALOCADO")) {
-                    JOptionPane.showMessageDialog(null, ct.alterarSituacao(Integer.parseInt(caixaDoNumeroDoTransporte.getText()), "ALOCADO"));// Código para confirmar a alteração e aparece a a
-                } else if (botaoSelecionar.getSelectedItem().toString().equals("PENDENTE")) {
-                    JOptionPane.showMessageDialog(null, ct.alterarSituacao(Integer.parseInt(caixaDoNumeroDoTransporte.getText()), "PENDENTE"));// Código para confirmar a alteração e aparece a a
-                } else {
-                    JOptionPane.showMessageDialog(null, ct.alterarSituacao(Integer.parseInt(caixaDoNumeroDoTransporte.getText()), "TRANSPORTE FINALIZADO"));// Código para confirmar a alteração e aparece a a
+                    } else JOptionPane.showMessageDialog(null, "TRANSPORTE NÃO ENCONTRADO");
+
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Por favor, digite um número inteiro válido.", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
-
-
             }
         });
 

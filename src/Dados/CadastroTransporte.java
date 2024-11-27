@@ -76,18 +76,18 @@ public class CadastroTransporte {
     public String alterarSituacao(int numeroTransporte, String situacao) {
         for (Transporte transporte : transportes) {
             if (transporte.getNumero() == numeroTransporte) {
-                if (transporte.getSituacao() == Estado.TERMINADO || transporte.getSituacao() == Estado.CANCELADO) {//
-                    return "Erro: Situação não pode ser alterada.";
+                if (transporte.getSituacao() == Estado.TERMINADO || transporte.getSituacao() == Estado.CANCELADO) {
+                    return "Esse transporte já foi finalizado.";
                 } else if (situacao.equalsIgnoreCase("PENDENTE")) {
                     transporte.setSituacao(Estado.PENDENTE);
-                    return "Situação alterada com sucesso.";
+                    return "Transporte alterado para PENDENTE";
                 } else if (situacao.equalsIgnoreCase("ALOCADO")) {
                     transporte.setSituacao(Estado.ALOCADO);
-                    return "Situação alterada com sucesso.";
+                    return "Transporte alterado para ALOCADO";
                 }
             }
         }
-        return "Erro: Transporte não encontrado.";
+        return "Transporte não encontrado.";
     }
 
     public ArrayList<Transporte> getTransportes() {
@@ -101,6 +101,6 @@ public class CadastroTransporte {
                 return t.toSuperString();
             }
         }
-        return "Drone não encontrado.";
+        return "Transporte não encontrado.";
     }
 }
