@@ -75,7 +75,7 @@ public class CadastroDrone {
                 relatorio.append("Drone Carga Viva:");
             if (drone instanceof DroneCargaInanimada)
                 relatorio.append("Drone Carga Inanimada:");
-                relatorio.append(drone.toString())
+            relatorio.append(drone.toString())
                     .append("\nCusto por Km: ")
                     .append(String.format("%.2f", drone.calculaCustoKm()))
                     .append("\n\n");

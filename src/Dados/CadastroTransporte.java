@@ -11,7 +11,7 @@ public class CadastroTransporte {
 
     public CadastroTransporte() {
         this.transportes = new LinkedList<>();
-        CadastroDrone cadastroDrone = new CadastroDrone();
+        this.cadastroDrone = CadastroDrone.getInstancia();
     }
 
     public boolean addTransporte(Transporte t) {

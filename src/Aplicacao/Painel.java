@@ -140,7 +140,7 @@ public class Painel {
                                             estado, qtdPessoas
                                     ));
                                 } catch (IllegalArgumentException ex) {
-                                    System.out.println("Erro ao processar transporte: " + ex.getMessage());
+                                    JOptionPane.showMessageDialog(null, "Erro ao processar transporte: " + ex.getMessage());
                                 }
                             }
                             case "5" -> {
