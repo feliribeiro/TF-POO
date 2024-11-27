@@ -192,11 +192,10 @@ public class Painel {
         mostrarTodosOsTransportesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (ct.getTransportesPendentes().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Nenhum transporte cadastrado.");
-                } else {
+                if (ct.gerarRelatorioTransportes() != null)
                     JOptionPane.showMessageDialog(null, ct.gerarRelatorioTransportes());
-                }
+                 else
+                    JOptionPane.showMessageDialog(null, "Nenhum transporte cadastrado.");
             }
         });
 
@@ -217,7 +216,6 @@ public class Painel {
         if (valor.chars().filter(ch -> ch == '.').count() > 1) {
             throw new IllegalArgumentException(nomeCampo + " possui múltiplos pontos: " + valor);
         }
-
         try {
             return Double.parseDouble(valor);
         } catch (NumberFormatException e) {

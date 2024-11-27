@@ -17,6 +17,23 @@ public class CadastroTransporte {
         CadastroDrone cadastroDrone = new CadastroDrone();
     }
 
+    public String gerarRelatorioTransportes() {
+        if (transportes.isEmpty()) {
+            return "Nenhum transporte cadastrado no sistema.";
+        }
+        StringBuilder relatorio = new StringBuilder("Relatório de Transportes:\n");
+        for (Transporte transporte : transportes) {
+            if (transporte instanceof TransportePessoal) relatorio.append("Transporte Pessoal:");
+            if (transporte instanceof TransporteCargaInanimada) relatorio.append("Transporte Carga Inanimada:");
+            if (transporte instanceof TransporteCargaViva) relatorio.append("Transporte Carga Viva:");
+            relatorio.append(transporte.toString())
+                    .append("\nCusto por Km: ")
+                    .append(String.format("%.2f", transporte.calculaCusto()))
+                    .append("\n\n");
+        }
+        return relatorio.toString();
+    }
+
     public static CadastroTransporte getInstancia() {
         if (instancia == null) {
             instancia = new CadastroTransporte();
@@ -60,19 +77,6 @@ public class CadastroTransporte {
         return false;
     }
 
-    public String gerarRelatorioTransportes() {
-        if (transportes.isEmpty()) {
-            return "Nenhum transporte cadastrado no sistema.";
-        }
-        StringBuilder relatorio = new StringBuilder("Relatório de Transportes:\n");
-        for (Transporte transporte : transportes) {
-            relatorio.append(transporte.toSuperString()).append("\n\n");
-        }
-        return relatorio.toString();
-    }
-
-
-
     public String alterarSituacao(int numeroTransporte, String situacao) {
         for (Transporte transporte : transportes) {
             if (transporte.getNumero() == numeroTransporte) {
@@ -89,11 +93,6 @@ public class CadastroTransporte {
         }
         return "Transporte não encontrado.";
     }
-
-    public ArrayList<Transporte> getTransportes() {
-        return transportes;
-    }
-
 
     public String getTransportePeloNumero(int numero) {
         for (Transporte t : transportes) {
