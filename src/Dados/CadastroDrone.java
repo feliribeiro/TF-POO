@@ -1,21 +1,28 @@
 
 package Dados;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CadastroDrone {
 
     private ArrayList<Drone> drones;
-
     private Comparador c;
 
     public CadastroDrone() {
         drones = new ArrayList<>();
+        c = new Comparador();
     }
 
     public void addDrone(Drone d) {
-        if (verificaRepetido(d.getCodigo())) {
+        if (eRepetido(d.getCodigo())) {
             return;
+        }
+        if (drones == null) {
+            drones = new ArrayList<>();
         }
         drones.add(d);
     }
@@ -29,17 +36,9 @@ public class CadastroDrone {
         return null;
     }
 
-    public boolean verificaRepetido(int codigoDrone) {
-        for (Drone drone : drones) {
-            if (drone.getCodigo() == codigoDrone)
-                return true;
-        }
-        return false;
-    }
-
     public String mostraDrones() {
-        drones.sort(c);
         ArrayList<Drone> droneOrdenados = drones;
+        drones.sort(c);
         StringBuilder sb = new StringBuilder();
         for (Drone drone : droneOrdenados) {
             sb.append(drone.toString()).append("\n");
@@ -70,6 +69,27 @@ public class CadastroDrone {
                     .append("\n\n");
         }
         return relatorio.toString();
+    }
+    public void escreverDronesEmArquivo(String nomeArquivo) {
+        File arquivo = new File(nomeArquivo);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivo))) {
+
+            if (drones.isEmpty()) {
+                writer.write("Nenhum drone cadastrado.");
+                return;
+            }
+
+            for (Drone drone : drones) {
+                writer.write(drone.toString());
+                writer.newLine();
+            }
+
+            System.out.println("Dados dos drones foram salvos no arquivo " + nomeArquivo);
+
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar os dados no arquivo: " + e.getMessage());
+        }
     }
 
     //METODO PARA GERAR O JSON SALVADADOS

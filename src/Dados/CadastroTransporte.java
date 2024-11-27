@@ -24,7 +24,10 @@ public class CadastroTransporte {
             transportes.add(t);
             t.setSituacao(Estado.ALOCADO);
             return true;
-        } else return false;
+        } else {
+            System.out.println("deu brete");
+            return false;
+        }
     }
 
     public boolean verificaRepetido(int numeroTransporte) {
