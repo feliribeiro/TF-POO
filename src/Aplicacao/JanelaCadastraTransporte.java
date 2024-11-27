@@ -11,7 +11,7 @@ public class JanelaCadastraTransporte extends JDialog {
         this.setContentPane(formJanelaTransportes.getPainel());
         this.setTitle("Cadastro de Transporte");
         this.pack();
-        this.setSize(800,800);
+        this.setSize(700,600);
         this.setModal(true);
         this.setVisible(true);
     }

@@ -15,7 +15,6 @@ public class formJanelaTransportes {
     private JPanel Painel;
     private JButton button1;
     private JRadioButton radioButton1;
-    private JLabel titulo;
     private JLabel titulo1;
     private JLabel titulo5;
     private JLabel titulo3;
@@ -54,7 +53,6 @@ public class formJanelaTransportes {
                     JOptionPane.showMessageDialog(null, "Este número já foi utilizado no cadastro de outro transporte." + "\n");
                     limpaField();
                 } else {
-
                     try {
                         String nomeClientes = nomeClienteTxt.getText();
                         int numero = Integer.parseInt(numTransporte.getText());
@@ -67,7 +65,7 @@ public class formJanelaTransportes {
 
                         if (selecaoTransporte.getSelectedItem().equals("Pessoal")) {
                             String quantidadePessoas = JOptionPane.showInputDialog(null, "Digite a quantidade máxima de pessoas:", "Quantidade de Pessoas", JOptionPane.QUESTION_MESSAGE);
-                            if (quantidadePessoas != null && !quantidadePessoas.isEmpty()) {
+                            if (quantidadePessoas != null || !quantidadePessoas.isEmpty()) {
                                 int qtdMaxima = Integer.parseInt(quantidadePessoas);
                                 if(ct.addTransporte(new TransportePessoal(1, numero, nomeClientes, descricao, peso, latitudeOrigem, latitudeDestino, longitudeOrigem, longitudeDestino, Estado.PENDENTE, qtdMaxima))){
                                     JOptionPane.showMessageDialog(null, "Transporte Pessoal cadastrado com sucesso!");
@@ -76,24 +74,19 @@ public class formJanelaTransportes {
                                 JOptionPane.showMessageDialog(null, "Quantidade de pessoas não informada.");
                             }
                         }
+
                         if (selecaoTransporte.getSelectedItem().equals("CargaInanimada")) {
                             Boolean cargaPerigosa = null;
                             String cargaPerigosaPal = JOptionPane.showInputDialog(null, "Digite se é ou não uma carga perigosa:", "Carga Perigosa", JOptionPane.QUESTION_MESSAGE);
-                            if (cargaPerigosaPal != null && !cargaPerigosaPal.isEmpty()) {
+                            if (cargaPerigosaPal != null || !cargaPerigosaPal.isEmpty()) {
                                 if(!cargaPerigosaPal.equalsIgnoreCase("sim") && !cargaPerigosaPal.equalsIgnoreCase("nao")){
                                     JOptionPane.showMessageDialog(null, "Digite sim ou nao.");
-                                } else if (cargaPerigosaPal.equalsIgnoreCase("sim")) {
-                                    cargaPerigosa = true;
-                                } else {
-                                    cargaPerigosa = false;
-                                }
+                                } else cargaPerigosa = cargaPerigosaPal.equalsIgnoreCase("sim");
                                 if(ct.addTransporte(new TransporteCargaInanimada(2, numero, nomeClientes, descricao, peso, latitudeOrigem, latitudeDestino, longitudeOrigem, longitudeDestino, Estado.PENDENTE, cargaPerigosa))){
                                     JOptionPane.showMessageDialog(null, "Transporte de Carga Inanimada cadastrado com sucesso!");
                                 } else JOptionPane.showMessageDialog(null, "Erro ao adicionar transporte.", "Erro", JOptionPane.ERROR_MESSAGE);
 
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Carga perigosa não informada.");
-                            }
+                            } else JOptionPane.showMessageDialog(null, "Carga perigosa não informada.");
                         }
                         if (selecaoTransporte.getSelectedItem().equals("CargaViva")) {
                             String temperaturaMax = JOptionPane.showInputDialog(null, "Digite a temperatura máxima:", "Temperatura Máxima", JOptionPane.QUESTION_MESSAGE);
@@ -108,8 +101,6 @@ public class formJanelaTransportes {
                             } else {
                                 JOptionPane.showMessageDialog(null, "Temperatura não informada.");
                             }
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Selecione um tipo de transporte.");
                         }
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(null, "Erro de formatação: Digite números válidos.");
@@ -119,8 +110,8 @@ public class formJanelaTransportes {
                         limpaField();
                     }
                 }
-                JOptionPane.showMessageDialog(null, "Transporte cadastrado com sucesso!");
-                janelaCadastraTransporte.setVisible(false);
+                //JOptionPane.showMessageDialog(null, "Transporte cadastrado com sucesso!");
+                //janelaCadastraTransporte.setVisible(false);
             }
         });
         limparButton.addActionListener(new ActionListener() {
