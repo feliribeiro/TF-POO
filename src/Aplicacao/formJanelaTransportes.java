@@ -39,8 +39,7 @@ public class formJanelaTransportes {
 
     public formJanelaTransportes(JanelaCadastraTransporte janelaCadastraTransporte) {
         this.janelaCadastraTransporte = janelaCadastraTransporte;
-
-        CadastroTransporte ct = new CadastroTransporte();
+        CadastroTransporte ct = CadastroTransporte.getInstancia();
 
         botaoVoltar.addActionListener(new ActionListener() {
             @Override

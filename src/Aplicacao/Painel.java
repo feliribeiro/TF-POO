@@ -23,7 +23,7 @@ public class Painel {
 
     public Painel() {
         ACMEAirDrones ACMEAirDrone = new ACMEAirDrones();
-        CadastroTransporte ct = new Dados.CadastroTransporte();
+        CadastroTransporte ct = CadastroTransporte.getInstancia();
         CadastroDrone cd = CadastroDrone.getInstancia();
 
         finalizarSistemaButton.addActionListener(new ActionListener() {

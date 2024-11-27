@@ -9,11 +9,19 @@ public class CadastroTransporte {
     private ArrayList<Transporte> transportes;
     private Queue<Transporte> pendentes;
     private CadastroDrone cadastroDrone;
+    private static CadastroTransporte instancia;
 
     public CadastroTransporte() {
         this.transportes = new ArrayList<>();
         this.pendentes = new LinkedList<>();
         CadastroDrone cadastroDrone = new CadastroDrone();
+    }
+
+    public static CadastroTransporte getInstancia() {
+        if (instancia == null) {
+            instancia = new CadastroTransporte();
+        }
+        return instancia;
     }
 
     public boolean addTransporte(Transporte t) {
