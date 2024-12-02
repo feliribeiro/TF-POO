@@ -47,10 +47,17 @@ public class formJanelaAlteraSituacao {
 
                         JOptionPane.showMessageDialog(null, ct.alterarSituacao(numTransporte, "ALOCADO"));
 
-                    } else if (botaoSelecionar.getSelectedItem().equals("PENDENTE")) {
+                    } else if(botaoSelecionar.getSelectedItem().equals("TERMINADO")){
+                        JOptionPane.showMessageDialog(null, ct.alterarSituacao(numTransporte, "TERMINADO"));
+
+                    }else if (botaoSelecionar.getSelectedItem().equals("PENDENTE")) {
                         JOptionPane.showMessageDialog(null, ct.alterarSituacao(numTransporte, "PENDENTE"));
 
-                    } else JOptionPane.showMessageDialog(null, "TRANSPORTE NÃO ENCONTRADO");
+                    } else if(botaoSelecionar.getSelectedItem().equals("CANCELADO")) {
+                        JOptionPane.showMessageDialog(null, ct.alterarSituacao(numTransporte, "CANCELADO"));
+                    }else {
+                        JOptionPane.showMessageDialog(null, "TRANSPORTE NÃO ENCONTRADO");
+                    }
 
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Por favor, digite um número inteiro válido.", "Erro", JOptionPane.ERROR_MESSAGE);

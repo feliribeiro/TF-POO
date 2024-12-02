@@ -85,11 +85,23 @@ public class CadastroTransporte {
                 if (transporte.getSituacao() == Estado.TERMINADO || transporte.getSituacao() == Estado.CANCELADO) {
                     return "Esse transporte já foi finalizado.";
                 } else if (situacao.equalsIgnoreCase("PENDENTE")) {
+                    if (transporte.getSituacao() == Estado.TERMINADO || transporte.getSituacao() == Estado.CANCELADO) {
+                        return "Esse transporte já foi finalizado.";
+                    }
                     transporte.setSituacao(Estado.PENDENTE);
                     return "Transporte alterado para PENDENTE";
                 } else if (situacao.equalsIgnoreCase("ALOCADO")) {
+                    if (transporte.getSituacao() == Estado.TERMINADO || transporte.getSituacao() == Estado.CANCELADO) {
+                        return "Esse transporte já foi finalizado.";
+                    }
                     transporte.setSituacao(Estado.ALOCADO);
                     return "Transporte alterado para ALOCADO";
+                } else if (situacao.equalsIgnoreCase("TERMINADO")) {
+                    transporte.setSituacao(Estado.TERMINADO);
+                    return "Transporte alterado para TERMINADO";
+                } else if (situacao.equalsIgnoreCase("CANCELADO")) {
+                    transporte.setSituacao(Estado.CANCELADO);
+                    return "Transporte alterado para CANCELADO";
                 }
             }
         }

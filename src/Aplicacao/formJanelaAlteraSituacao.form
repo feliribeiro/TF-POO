@@ -43,6 +43,8 @@
             <item value="Selecionar...."/>
             <item value="ALOCADO"/>
             <item value="PENDENTE"/>
+            <item value="CANCELADO"/>
+            <item value="TERMINADO"/>
           </model>
         </properties>
       </component>
