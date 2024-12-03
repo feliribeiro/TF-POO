@@ -11,7 +11,7 @@ public class JanelaAlteraSituacao extends JDialog {
         this.setContentPane(formJanelaAlteraSituacao.getPainel());
         this.setTitle("Alterar Situação");
         this.pack();
-        this.setSize(800,400);
+        this.setSize(600,300);
         this.setModal(true);
         this.setVisible(true);
     }

@@ -204,6 +204,7 @@ public class Painel {
         alterarASituaçãoDeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 JanelaAlteraSituacao JAS = new JanelaAlteraSituacao();
             }
         });

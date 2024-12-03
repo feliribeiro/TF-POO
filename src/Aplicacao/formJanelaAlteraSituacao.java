@@ -6,7 +6,6 @@ import Dados.CadastroTransporte;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
 
 public class formJanelaAlteraSituacao {
     private JanelaAlteraSituacao janelaAlteraSituacao;
@@ -15,6 +14,7 @@ public class formJanelaAlteraSituacao {
     private JButton confirmarButton;
     private JButton voltarButton;
     private JComboBox botaoSelecionar;
+    private JButton Limpar;
     private JTextField dadosDoTransporte;
 
 
@@ -36,32 +36,29 @@ public class formJanelaAlteraSituacao {
 
             }
         });
-        confirmarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    int numTransporte = Integer.parseInt(caixaDoNumeroDoTransporte.getText());
-                    JOptionPane.showMessageDialog(null, ct.getTransportePeloNumero(numTransporte));
+        confirmarButton.addActionListener(e -> {
+            try {
+                int numTransporte = Integer.parseInt(caixaDoNumeroDoTransporte.getText());
+                JOptionPane.showMessageDialog(null, ct.getTransportePeloNumero(numTransporte));
 
-                    if (botaoSelecionar.getSelectedItem().equals("ALOCADO")) {
+                if (botaoSelecionar.getSelectedItem().equals("ALOCADO")) {
 
-                        JOptionPane.showMessageDialog(null, ct.alterarSituacao(numTransporte, "ALOCADO"));
+                    JOptionPane.showMessageDialog(null, ct.alterarSituacao(numTransporte, "ALOCADO"));
 
-                    } else if(botaoSelecionar.getSelectedItem().equals("TERMINADO")){
-                        JOptionPane.showMessageDialog(null, ct.alterarSituacao(numTransporte, "TERMINADO"));
+                } else if(botaoSelecionar.getSelectedItem().equals("TERMINADO")){
+                    JOptionPane.showMessageDialog(null, ct.alterarSituacao(numTransporte, "TERMINADO"));
 
-                    }else if (botaoSelecionar.getSelectedItem().equals("PENDENTE")) {
-                        JOptionPane.showMessageDialog(null, ct.alterarSituacao(numTransporte, "PENDENTE"));
+                }else if (botaoSelecionar.getSelectedItem().equals("PENDENTE")) {
+                    JOptionPane.showMessageDialog(null, ct.alterarSituacao(numTransporte, "PENDENTE"));
 
-                    } else if(botaoSelecionar.getSelectedItem().equals("CANCELADO")) {
-                        JOptionPane.showMessageDialog(null, ct.alterarSituacao(numTransporte, "CANCELADO"));
-                    }else {
-                        JOptionPane.showMessageDialog(null, "TRANSPORTE NÃO ENCONTRADO");
-                    }
-
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Por favor, digite um número inteiro válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+                } else if(botaoSelecionar.getSelectedItem().equals("CANCELADO")) {
+                    JOptionPane.showMessageDialog(null, ct.alterarSituacao(numTransporte, "CANCELADO"));
+                }else {
+                    JOptionPane.showMessageDialog(null, "TRANSPORTE NÃO ENCONTRADO");
                 }
+
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Por favor, digite um número inteiro válido.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -71,10 +68,11 @@ public class formJanelaAlteraSituacao {
 
             }
         });
-        dadosDoTransporte.addActionListener(new ActionListener() {
+        Limpar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ct.getTransportePeloNumero(Integer.parseInt(dadosDoTransporte.getText()));
+                caixaDoNumeroDoTransporte.setText("");
+                botaoSelecionar.setSelectedIndex(0);
             }
         });
     }

@@ -50,10 +50,12 @@ public class formJanelaCadastroDrone {
         botaoConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+               try {
                 if (cd.eRepetido(Integer.parseInt(txtCodigo.getText()))){
                     JOptionPane.showMessageDialog(null, "Este codigo já foi utilizado no cadastro de outro drone."+"\n");
                     limpaField();
-                } else {
+                } } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Erro de formatação: Digite números válidos.");
                     try {
                         if (opcoesDrone.getSelectedItem().equals("Drone Pessoal")){
                             //CargaAnimada.setVisible(false);
@@ -94,10 +96,10 @@ public class formJanelaCadastroDrone {
                                         "Proteçao: "+ protegidoOuClimatizado+ "\n");
                             }
                         }
-                    } catch (NumberFormatException ex) {
+                    } catch (NumberFormatException ex1) {
                         JOptionPane.showMessageDialog(null, "Erro de formatação: Digite números válidos.");
                         limpaField();
-                    } catch (Exception ex) {
+                    } catch (Exception ex2) {
                         JOptionPane.showMessageDialog(null, "Erro ao adicionar drone: " + ex.getMessage());
                         limpaField();
                     }

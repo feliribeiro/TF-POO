@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Aplicacao.formJanelaAlteraSituacao">
-  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="67" y="10" width="465" height="129"/>
+      <xy x="67" y="8" width="564" height="103"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -11,7 +11,7 @@
       <component id="70f99" class="javax.swing.JLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="268" height="17"/>
+            <preferred-size width="229" height="17"/>
           </grid>
         </constraints>
         <properties>
@@ -21,22 +21,43 @@
       <component id="22d3f" class="javax.swing.JTextField" binding="caixaDoNumeroDoTransporte">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+            <preferred-size width="229" height="30"/>
           </grid>
         </constraints>
         <properties/>
       </component>
-      <component id="7e663" class="javax.swing.JLabel">
+      <component id="e67e0" class="javax.swing.JButton" binding="voltarButton" default-binding="true">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="200" height="30"/>
+          </grid>
         </constraints>
         <properties>
-          <text value="Digite a situação que deseja"/>
+          <hideActionText value="false"/>
+          <text value="Voltar"/>
+        </properties>
+      </component>
+      <component id="59587" class="javax.swing.JButton" binding="Limpar">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Limpar"/>
+        </properties>
+      </component>
+      <component id="de6a4" class="javax.swing.JButton" binding="confirmarButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="268" height="30"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Confirmar"/>
         </properties>
       </component>
       <component id="a7fb3" class="javax.swing.JComboBox" binding="botaoSelecionar">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <model>
@@ -48,30 +69,12 @@
           </model>
         </properties>
       </component>
-      <component id="3d9ae" class="javax.swing.JTextField" binding="dadosDoTransporte">
+      <component id="7e663" class="javax.swing.JLabel">
         <constraints>
-          <grid row="2" column="0" row-span="2" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="de6a4" class="javax.swing.JButton" binding="confirmarButton" default-binding="true">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="268" height="30"/>
-          </grid>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Confirmar"/>
-        </properties>
-      </component>
-      <component id="e67e0" class="javax.swing.JButton" binding="voltarButton" default-binding="true">
-        <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Voltar"/>
+          <text value="Digite a situação que deseja"/>
         </properties>
       </component>
     </children>
