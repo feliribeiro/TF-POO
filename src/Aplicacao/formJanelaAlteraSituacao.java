@@ -79,4 +79,9 @@ public class formJanelaAlteraSituacao {
     public JPanel getPainel() {
         return panel1;
     }
-}
+    private void createUIComponents() {
+    panel1 = new JPanel();
+    panel1.setBackground(new java.awt.Color(0, 0, 128)); // Azul marinho
+        }
+    }
+
